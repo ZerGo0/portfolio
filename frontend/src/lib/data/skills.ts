@@ -198,7 +198,25 @@ export const items = [
 		logo: Assets.Tailwind,
 		name: 'Tailwind CSS',
 		category: 'framework'
+	}),
+	defineSkill({
+		slug: 'less',
+		color: 'blue',
+		description:
+			'Less is a dynamic preprocessor style sheet language that can be compiled into Cascading Style Sheets (CSS).',
+		logo: Assets.Less,
+		name: 'Less',
+		category: 'markup-style'
 	})
+	// defineSkill({
+	// 	slug: 'placeholder',
+	// 	color: 'blue',
+	// 	description:
+	// 		'',
+	// 	logo: Assets.Unknown,
+	// 	name: 'Placeholder',
+	// 	category: 'others'
+	// })
 ] as const;
 
 export const title = 'Skills';

@@ -81,7 +81,8 @@ const Assets = {
 	DotMemory: a('dotmemory.png'),
 	MySql: a('mysql.svg'),
 	GithubActions: a('github-actions.svg'),
-	Cloudflare: a('cloudflare.svg')
+	Cloudflare: a('cloudflare.svg'),
+	Less: a('less.svg')
 };
 
 export default Assets;
