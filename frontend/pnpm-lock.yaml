@@ -16,8 +16,8 @@ importers:
         specifier: ^1.1.21
         version: 1.1.37
       '@riadh-adrani/utils':
-        specifier: 0.42.2
-        version: 0.42.2
+        specifier: 1.0.0
+        version: 1.0.0
       '@sveltejs/adapter-auto':
         specifier: 2.1.0
         version: 2.1.0(@sveltejs/kit@1.25.0(svelte@4.2.1)(vite@4.5.3(sass@1.77.8)))
@@ -326,8 +326,36 @@ packages:
   '@polka/url@1.0.0-next.25':
     resolution: {integrity: sha512-j7P6Rgr3mmtdkeDGTe0E/aYyWEWVtc5yFXtHCRHs28/jptDEWfaVOc5T7cblqy1XKPPfCxJc/8DwQ5YgLOZOVQ==}
 
-  '@riadh-adrani/utils@0.42.2':
-    resolution: {integrity: sha512-3VUMfi+Utp/l0f/4dxmyxhOf/Wmzt4c0MvXgYkz7AurrPG5iq6rifdeSzb/SZDuHCOtjsRUCt+MHz+yEswYgoA==}
+  '@riadh-adrani/array-utils@1.0.3':
+    resolution: {integrity: sha512-Q2kbkeYQjRGt4z6VdI0anxqG5g6LqvH/6+9v+UNSZzNC/1ZncnUrHJI2ecfTtVAhuh6Y/NRJF0lPRfpVdjSMVg==}
+    engines: {node: '>=16.0.0'}
+
+  '@riadh-adrani/async-utils@1.0.2':
+    resolution: {integrity: sha512-HphQxPIkusvDpOzo6I75dEuFdWszWaAOcmG1bGI2WRiFG/nDPk393aaLRVlKgVDP6vqmk0GHbsmkuzR9qWJYbQ==}
+    engines: {node: '>=16.0.0'}
+
+  '@riadh-adrani/color-utils@1.0.2':
+    resolution: {integrity: sha512-PrwEKq+yGNKNEo4pVWW/DrZMOrK1ez3yt3qG3Kw1RKdVAWvW/5c+ftC2DhTN8Nx8j8K8JQEmtWOs/OR4THPVGg==}
+    engines: {node: '>=16.0.0'}
+
+  '@riadh-adrani/math-utils@1.0.2':
+    resolution: {integrity: sha512-DUUEVzCGV9pX3L6IX+owDI0Y75zx9c6rRnincu+CjWh77J9DPuS6Ags3iaLDxnHy8/BkFHkhq6fATuHGbFlkuw==}
+    engines: {node: '>=16.0.0'}
+
+  '@riadh-adrani/obj-utils@1.0.5':
+    resolution: {integrity: sha512-ZQYFbRPAalAVrA15CMNTQbVR5JkWYEflKd80vdEri65e+MoKU+D5Zicbh4NjNLdTsEygz2AAtoURkvxSJdMhAg==}
+    engines: {node: '>=16.0.0'}
+
+  '@riadh-adrani/str-utils@1.0.3':
+    resolution: {integrity: sha512-vZpcyCkkk7oUz1HSKRz/a/SZXUZLogomKHKpJd7wwHRodFH6y3aD9tD/ujcXYxbz3MmdmnqIMqVsWTUm326Y9A==}
+    engines: {node: '>=16.0.0'}
+
+  '@riadh-adrani/type-utils@1.1.0':
+    resolution: {integrity: sha512-+vp19TGlMF4V0F7v9dNt6xT1yIFPBdQ7YCHqg4RR8xbO35sQPpsjet0zSggXSAOF2trj8AFhlgvQuIj4F2wNOw==}
+    engines: {node: '>=16.0.0'}
+
+  '@riadh-adrani/utils@1.0.0':
+    resolution: {integrity: sha512-qtHeJF0UgMs1CDavrnzj6b0KOL+bDx4Nkl58rjDG5aki5RFlh0b1m8rD8YKpST99tJ+Eqi53nFZix2RsQDVmTw==}
     engines: {node: '>=16.0.0'}
 
   '@rollup/pluginutils@5.1.0':
@@ -1611,7 +1639,29 @@ snapshots:
 
   '@polka/url@1.0.0-next.25': {}
 
-  '@riadh-adrani/utils@0.42.2': {}
+  '@riadh-adrani/array-utils@1.0.3': {}
+
+  '@riadh-adrani/async-utils@1.0.2': {}
+
+  '@riadh-adrani/color-utils@1.0.2': {}
+
+  '@riadh-adrani/math-utils@1.0.2': {}
+
+  '@riadh-adrani/obj-utils@1.0.5': {}
+
+  '@riadh-adrani/str-utils@1.0.3': {}
+
+  '@riadh-adrani/type-utils@1.1.0': {}
+
+  '@riadh-adrani/utils@1.0.0':
+    dependencies:
+      '@riadh-adrani/array-utils': 1.0.3
+      '@riadh-adrani/async-utils': 1.0.2
+      '@riadh-adrani/color-utils': 1.0.2
+      '@riadh-adrani/math-utils': 1.0.2
+      '@riadh-adrani/obj-utils': 1.0.5
+      '@riadh-adrani/str-utils': 1.0.3
+      '@riadh-adrani/type-utils': 1.1.0
 
   '@rollup/pluginutils@5.1.0(rollup@3.29.4)':
     dependencies:
