@@ -94,8 +94,8 @@ importers:
         specifier: 4.2.1
         version: 4.2.1
       svelte-check:
-        specifier: 3.5.2
-        version: 3.5.2(postcss@8.4.40)(sass@1.77.8)(svelte@4.2.1)
+        specifier: 3.8.5
+        version: 3.8.5(postcss@8.4.40)(sass@1.77.8)(svelte@4.2.1)
       tslib:
         specifier: ^2.4.1
         version: 2.6.3
@@ -1276,11 +1276,11 @@ packages:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
     engines: {node: '>=8'}
 
-  svelte-check@3.5.2:
-    resolution: {integrity: sha512-5a/YWbiH4c+AqAUP+0VneiV5bP8YOk9JL3jwvN+k2PEPLgpu85bjQc5eE67+eIZBBwUEJzmO3I92OqKcqbp3fw==}
+  svelte-check@3.8.5:
+    resolution: {integrity: sha512-3OGGgr9+bJ/+1nbPgsvulkLC48xBsqsgtc8Wam281H4G9F5v3mYGa2bHRsPuwHC5brKl4AxJH95QF73kmfihGQ==}
     hasBin: true
     peerDependencies:
-      svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0
+      svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
 
   svelte-hmr@0.15.3:
     resolution: {integrity: sha512-41snaPswvSf8TJUhlkoJBekRrABDXDMdpNpT2tfHIv4JuhgvHqLMhEPGtaQn0BmbNSTkuz2Ed20DF2eHw0SmBQ==}
@@ -2625,12 +2625,10 @@ snapshots:
     dependencies:
       has-flag: 4.0.0
 
-  svelte-check@3.5.2(postcss@8.4.40)(sass@1.77.8)(svelte@4.2.1):
+  svelte-check@3.8.5(postcss@8.4.40)(sass@1.77.8)(svelte@4.2.1):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.25
       chokidar: 3.6.0
-      fast-glob: 3.3.2
-      import-fresh: 3.3.0
       picocolors: 1.0.1
       sade: 1.8.1
       svelte: 4.2.1
