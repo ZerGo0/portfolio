@@ -2,18 +2,18 @@
 	import { base } from '$app/paths';
 	import { getAssetURL } from '$lib/data/assets';
 	import { title } from '@data/experience';
-	import { getTimeDiff } from '$lib/utils';
 
 	import type { Experience } from '$lib/types';
 
+	import Banner from '$lib/components/Banner/Banner.svelte';
+	import CardDivider from '$lib/components/Card/CardDivider.svelte';
 	import CardLogo from '$lib/components/Card/CardLogo.svelte';
+	import Chip from '$lib/components/Chip/Chip.svelte';
+	import UIcon from '$lib/components/Icon/UIcon.svelte';
 	import MainTitle from '$lib/components/MainTitle/MainTitle.svelte';
 	import Markdown from '$lib/components/Markdown.svelte';
 	import TabTitle from '$lib/components/TabTitle.svelte';
-	import Chip from '$lib/components/Chip/Chip.svelte';
-	import Banner from '$lib/components/Banner/Banner.svelte';
-	import UIcon from '$lib/components/Icon/UIcon.svelte';
-	import CardDivider from '$lib/components/Card/CardDivider.svelte';
+	import { computeExactDuration } from '$lib/utils/helpers';
 
 	export let data: { experience?: Experience };
 
@@ -39,7 +39,7 @@
 						{data.experience.company} · {data.experience.location} · {data.experience.type}
 					</p>
 					<p class="font-300 text-0.9em text-[var(--tertiary-text)] m-y-2 text-center">
-						{getTimeDiff(data.experience.period.from, data.experience.period.to)}
+						{computeExactDuration(data.experience.period.from, data.experience.period.to)}
 					</p>
 					<div class="w-75%">
 						<CardDivider />
