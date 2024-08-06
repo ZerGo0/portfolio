@@ -43,8 +43,8 @@ importers:
         specifier: ^5.45.0
         version: 5.62.0(eslint@8.57.0)(typescript@4.9.5)
       '@unocss/core':
-        specifier: ^0.56.1
-        version: 0.56.5
+        specifier: ^0.61.9
+        version: 0.61.9
       '@unocss/extractor-svelte':
         specifier: ^0.56.1
         version: 0.56.5
@@ -479,6 +479,9 @@ packages:
 
   '@unocss/core@0.56.5':
     resolution: {integrity: sha512-fx5VhOjSHn0HdV2D34pEwFMAHJcJQRTCp1xEE4GzxY1irXzaa+m2aYf5PZjmDxehiOC16IH7TO9FOWANXk1E0w==}
+
+  '@unocss/core@0.61.9':
+    resolution: {integrity: sha512-2W1YZQIWXcueGdbXU/ZCqn/8yQhWk8e8kAHFkVlbc9rictkd2UmPB9nIZ8Ii1tMwt6F0TT6vfHbLJEGCV08o2g==}
 
   '@unocss/extractor-arbitrary-variants@0.56.5':
     resolution: {integrity: sha512-p2pyzz/ONvc5CGcaB9OZvWE8qkRSgyuhaQqFQLdBFeUhveHC0CGP0iSnXwBgAFHWM7DJo4/JpWeZ+mBt0ogVLA==}
@@ -1813,6 +1816,8 @@ snapshots:
       unconfig: 0.3.13
 
   '@unocss/core@0.56.5': {}
+
+  '@unocss/core@0.61.9': {}
 
   '@unocss/extractor-arbitrary-variants@0.56.5':
     dependencies:
