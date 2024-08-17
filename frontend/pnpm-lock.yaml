@@ -19,8 +19,8 @@ importers:
         specifier: 1.0.0
         version: 1.0.0
       '@sveltejs/adapter-auto':
-        specifier: 2.1.0
-        version: 2.1.0(@sveltejs/kit@1.30.4(svelte@4.2.18)(vite@4.5.3(sass@1.77.8)))
+        specifier: 2.1.1
+        version: 2.1.1(@sveltejs/kit@1.30.4(svelte@4.2.18)(vite@4.5.3(sass@1.77.8)))
       '@sveltejs/adapter-static':
         specifier: 2.0.3
         version: 2.0.3(@sveltejs/kit@1.30.4(svelte@4.2.18)(vite@4.5.3(sass@1.77.8)))
@@ -786,8 +786,8 @@ packages:
       rollup:
         optional: true
 
-  '@sveltejs/adapter-auto@2.1.0':
-    resolution: {integrity: sha512-o2pZCfATFtA/Gw/BB0Xm7k4EYaekXxaPGER3xGSY3FvzFJGTlJlZjBseaXwYSM94lZ0HniOjTokN3cWaLX6fow==}
+  '@sveltejs/adapter-auto@2.1.1':
+    resolution: {integrity: sha512-nzi6x/7/3Axh5VKQ8Eed3pYxastxoa06Y/bFhWb7h3Nu+nGRVxKAy3+hBJgmPCwWScy8n0TsstZjSVKfyrIHkg==}
     peerDependencies:
       '@sveltejs/kit': ^1.0.0
 
@@ -1413,8 +1413,8 @@ packages:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
 
-  import-meta-resolve@3.1.1:
-    resolution: {integrity: sha512-qeywsE/KC3w9Fd2ORrRDUw6nS/nLwZpXgfrOc2IILvZYnCaEMd+D56Vfg9k4G29gIeVi3XKql1RQatME8iYsiw==}
+  import-meta-resolve@4.1.0:
+    resolution: {integrity: sha512-I6fiaX09Xivtk+THaMfAwnA3MVA5Big1WHF1Dfx9hFuvNIWpXnorlkzhcQf6ehrqQiiZECRt1poOAkPmer3ruw==}
 
   importx@0.4.3:
     resolution: {integrity: sha512-x6E6OxmWq/SUaj7wDeDeSjyHP+rMUbEaqJ5fw0uEtC/FTX9ocxNMFJ+ONnpJIsRpFz3ya6qJAK4orwSKqw0BSQ==}
@@ -2550,10 +2550,10 @@ snapshots:
     optionalDependencies:
       rollup: 3.29.4
 
-  '@sveltejs/adapter-auto@2.1.0(@sveltejs/kit@1.30.4(svelte@4.2.18)(vite@4.5.3(sass@1.77.8)))':
+  '@sveltejs/adapter-auto@2.1.1(@sveltejs/kit@1.30.4(svelte@4.2.18)(vite@4.5.3(sass@1.77.8)))':
     dependencies:
       '@sveltejs/kit': 1.30.4(svelte@4.2.18)(vite@4.5.3(sass@1.77.8))
-      import-meta-resolve: 3.1.1
+      import-meta-resolve: 4.1.0
 
   '@sveltejs/adapter-static@2.0.3(@sveltejs/kit@1.30.4(svelte@4.2.18)(vite@4.5.3(sass@1.77.8)))':
     dependencies:
@@ -3363,7 +3363,7 @@ snapshots:
       parent-module: 1.0.1
       resolve-from: 4.0.0
 
-  import-meta-resolve@3.1.1: {}
+  import-meta-resolve@4.1.0: {}
 
   importx@0.4.3:
     dependencies:
