@@ -25,7 +25,7 @@ export const items: Array<Experience> = [
 			'dotTrace',
 			'dotMemory'
 		),
-		name: 'Fullstack Engineer',
+		name: 'Software Developer .NET',
 		color: 'blue',
 		links: [{ label: '4SELLERS', to: 'https://www.4sellers.de', newTab: true }],
 		logo: Assets.ForSellers,
