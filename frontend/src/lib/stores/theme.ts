@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import { writable } from 'svelte/store';
 
-const key = 'theme';
+const key = 'dark-theme';
 
 const updateLocalStorage = (value: boolean) => {
 	if (browser) {
