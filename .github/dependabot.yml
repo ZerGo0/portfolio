@@ -9,20 +9,28 @@ updates:
     directories:
       - "**/*"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+      day: "saturday"
+      time: "00:00"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+      day: "saturday"
+      time: "00:00"
 
   - package-ecosystem: "gomod"
     directories:
       - "**/*"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+      day: "saturday"
+      time: "00:00"
 
   - package-ecosystem: "npm"
     directories:
       - "**/*"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
+      day: "saturday"
+      time: "00:00"
