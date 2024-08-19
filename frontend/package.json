@@ -28,7 +28,7 @@
 		"@unocss/svelte-scoped": "^0.61.9",
 		"dompurify": "^3.0.5",
 		"eslint": "^8.28.0",
-		"eslint-config-prettier": "^8.5.0",
+		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte3": "^4.0.0",
 		"marked": "^14.0.0",
 		"marked-gfm-heading-id": "^4.0.1",
