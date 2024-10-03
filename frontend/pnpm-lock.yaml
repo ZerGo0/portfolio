@@ -69,14 +69,14 @@ importers:
         specifier: ^4.0.0
         version: 4.0.0(eslint@9.9.1(jiti@1.21.6))(svelte@4.2.19)
       marked:
-        specifier: ^14.0.0
-        version: 14.0.0
+        specifier: ^14.1.2
+        version: 14.1.2
       marked-gfm-heading-id:
         specifier: ^4.0.1
-        version: 4.0.1(marked@14.0.0)
+        version: 4.0.1(marked@14.1.2)
       marked-mangle:
         specifier: ^1.1.9
-        version: 1.1.9(marked@14.0.0)
+        version: 1.1.9(marked@14.1.2)
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -1511,8 +1511,8 @@ packages:
     peerDependencies:
       marked: '>=4 <15'
 
-  marked@14.0.0:
-    resolution: {integrity: sha512-uIj4+faQ+MgHgwUW1l2PsPglZLOLOT1uErt06dAPtx2kjteLAkbsd/0FiYg/MGS+i7ZKLb7w2WClxHkzOOuryQ==}
+  marked@14.1.2:
+    resolution: {integrity: sha512-f3r0yqpz31VXiDB/wj9GaOB0a2PRLQl6vJmXiFrniNwjkKdvakqJRULhjFKJpxOchlCRiG5fcacoUZY5Xa6PEQ==}
     engines: {node: '>= 18'}
     hasBin: true
 
@@ -2553,7 +2553,7 @@ snapshots:
 
   '@types/marked@6.0.0':
     dependencies:
-      marked: 14.0.0
+      marked: 14.1.2
 
   '@types/prismjs@1.26.4': {}
 
@@ -3396,16 +3396,16 @@ snapshots:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  marked-gfm-heading-id@4.0.1(marked@14.0.0):
+  marked-gfm-heading-id@4.0.1(marked@14.1.2):
     dependencies:
       github-slugger: 2.0.0
-      marked: 14.0.0
+      marked: 14.1.2
 
-  marked-mangle@1.1.9(marked@14.0.0):
+  marked-mangle@1.1.9(marked@14.1.2):
     dependencies:
-      marked: 14.0.0
+      marked: 14.1.2
 
-  marked@14.0.0: {}
+  marked@14.1.2: {}
 
   mdn-data@2.0.30: {}
 
