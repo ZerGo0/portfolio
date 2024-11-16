@@ -39,27 +39,27 @@ Features include:
 		screenshots: [
 			{
 				label: 'Automated Messages',
-				src: '/assets/projects/fansly-bot/1.png'
+				src: '/assets/projects/fansly-bot/1.webp'
 			},
 			{
 				label: 'Settings Tab',
-				src: '/assets/projects/fansly-bot/2.png'
+				src: '/assets/projects/fansly-bot/2.webp'
 			},
 			{
 				label: 'Tip Goals Overlay',
-				src: '/assets/projects/fansly-bot/3.png'
+				src: '/assets/projects/fansly-bot/3.webp'
 			},
 			{
 				label: 'Chat Overlay',
-				src: '/assets/projects/fansly-bot/4.png'
+				src: '/assets/projects/fansly-bot/4.webp'
 			},
 			{
 				label: 'Documentation',
-				src: '/assets/projects/fansly-bot/5.png'
+				src: '/assets/projects/fansly-bot/5.webp'
 			},
 			{
 				label: 'CI / CD',
-				src: '/assets/projects/fansly-bot/6.png'
+				src: '/assets/projects/fansly-bot/6.webp'
 			}
 		]
 	},
@@ -70,6 +70,7 @@ Features include:
 			'A browser extension that enhances Fansly by adding support for Twitch and third-party emote providers. This is another project I dedicate my free time to, and it is currently used by over 600 users.',
 		shortDescription: 'A emote extension for Fansly.com',
 		links: [
+			{ to: 'https://github.com/ZerGo0/Ftv-extension', label: 'GitHub' },
 			{
 				to: 'https://chromewebstore.google.com/detail/ftv/bgoellhnolkmeggkhcepjajapdkkckmi',
 				label: 'Chrome Web Store'
@@ -86,13 +87,50 @@ Features include:
 		screenshots: [
 			{
 				label: 'Dark Theme',
-				src: '/assets/projects/ftv/1.png'
+				src: '/assets/projects/ftv/1.webp'
 			},
 			{
 				label: 'Light Theme',
-				src: '/assets/projects/ftv/2.png'
+				src: '/assets/projects/ftv/2.webp'
 			}
 		]
+	},
+	{
+		slug: 'wakatime-profile-stats',
+		color: 'blue',
+		description: 'A GitHub Action that updates your README.md with your WakaTime stats.',
+		shortDescription: 'A GitHub Action that updates your README.md with your WakaTime stats.',
+		links: [{ to: 'https://github.com/ZerGo0/wakatime-profile-stats', label: 'GitHub' }],
+		logo: Assets.Unknown,
+		name: 'WakaTime Profile Stats',
+		period: {
+			from: new Date(2024, 9, 4)
+		},
+		skills: getSkills('go', 'docker', 'github-actions'),
+		type: 'GitHub Action',
+		screenshots: [
+			{
+				label: 'Example',
+				src: '/assets/projects/wakatime-profile-stats/1.webp'
+			}
+		]
+	},
+	{
+		slug: 'fontsourcedownloader',
+		color: 'blue',
+		description:
+			'A command line tool that downloads all fonts from Fontsource.org based on the provided criterias.',
+		shortDescription:
+			'A command line tool that downloads all fonts from Fontsource.org based on the provided criterias.',
+		links: [{ to: 'https://github.com/ZerGo0/fontsourcedownloader', label: 'GitHub' }],
+		logo: Assets.Unknown,
+		name: 'Fontsource Downloader',
+		period: {
+			from: new Date(2024, 8, 25)
+		},
+		skills: getSkills('go', 'docker'),
+		type: 'Command Line Tool',
+		screenshots: []
 	},
 	{
 		slug: 'discord-proxy-bot',
