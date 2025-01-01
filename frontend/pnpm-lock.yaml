@@ -48,8 +48,8 @@ importers:
         specifier: ^0.65.3
         version: 0.65.3
       '@unocss/preset-icons':
-        specifier: ^0.64.1
-        version: 0.64.1
+        specifier: ^0.65.3
+        version: 0.65.3
       '@unocss/svelte-scoped':
         specifier: ^0.63.6
         version: 0.63.6
@@ -489,6 +489,9 @@ packages:
   '@iconify/utils@2.1.33':
     resolution: {integrity: sha512-jP9h6v/g0BIZx0p7XGJJVtkVnydtbgTgt9mVNcGDYwaa7UhdHdI9dvoq+gKj9sijMSJKxUPEG2JyjsgXjxL7Kw==}
 
+  '@iconify/utils@2.2.1':
+    resolution: {integrity: sha512-0/7J7hk4PqXmxo5PDBDxmnecw5PxklZJfNjIVG9FM0mEfVrvfudS22rYWsqVk6gR3UJ/mSYS90X4R3znXnqfNA==}
+
   '@jridgewell/gen-mapping@0.3.5':
     resolution: {integrity: sha512-IzL8ZoEDIBRWEzlCcRhOaCupYyN5gdIK+Q6fbFdPDg6HqX6jpkItn7DFIpW9LQzXG6Df9sA7+OKnq0qlz/GaQg==}
     engines: {node: '>=6.0.0'}
@@ -820,6 +823,9 @@ packages:
   '@unocss/core@0.64.1':
     resolution: {integrity: sha512-D1ULd70a24/k6kGyHCIijbrrIn9UjFUEBg2R4xKX2/ViQb1k2MIgOs4VS20MkJX6kbZXqqm/zAFHzDhsQGIhBA==}
 
+  '@unocss/core@0.65.3':
+    resolution: {integrity: sha512-xYkJ63lIadL6KqvGcaE2fFeLvo6rC1F+e+R9EFn0Aj0ArMRhiltZk8vvLFHP7iYjjdTdqDkAr/7IdrTosTo8Pg==}
+
   '@unocss/extractor-arbitrary-variants@0.63.6':
     resolution: {integrity: sha512-HJX0oAa9uzwKYoU8CoJdP1gxjuqFmOLxyZmITjStAmZNZpIxlz2wz4VrHmqml2dkvx/mifGGGc/GxZpQ36D12Q==}
 
@@ -843,6 +849,9 @@ packages:
 
   '@unocss/preset-icons@0.64.1':
     resolution: {integrity: sha512-aQ4hN2NFdJo08pzUYc1FpwTkNUByE7FB51KmRwXclsVKeXFGvFO3YUYeg5IDlTxqCfvFVWZ3q8NhnmpKGkbutw==}
+
+  '@unocss/preset-icons@0.65.3':
+    resolution: {integrity: sha512-3V4d5M+a2mTGnLjSsXyNL+/+nzjasdsJEJdXarLnj9Ez0KaBCvi32OjyoYrZUSMC5GCSreVNUOVBZKcxfdtitA==}
 
   '@unocss/preset-mini@0.63.6':
     resolution: {integrity: sha512-pZDZbSuxabHSwPIy3zCgQ4MNdVCSHvOvZecreH+v96R1oOhquiwU8WiSbkxvZiKiLQJd7JUVW87E1pAzr5ZGGQ==}
@@ -1036,6 +1045,9 @@ packages:
   confbox@0.1.7:
     resolution: {integrity: sha512-uJcB/FKZtBMCJpK8MQji6bJHgu1tixKPxRLeGkNzBoOZzpnZUJm0jm2/sBDWcuBx1dYgxV4JU+g5hmNxCyAmdA==}
 
+  confbox@0.1.8:
+    resolution: {integrity: sha512-RMtmw0iFkeR4YV+fUOSucriAQNb9g8zFR52MWCtl+cCZOFRNL6zeB395vPzFhEjjn4fMxXudmELnl/KF/WrK6w==}
+
   consola@3.2.3:
     resolution: {integrity: sha512-I5qxpzLv+sJhTVEoLYNcTW+bThDCPsit0vLNKShZx6rLtpilNpmmeTPaeqJb9ZE9dV3DGaeby6Vuhrw38WjeyQ==}
     engines: {node: ^14.18.0 || >=16.10.0}
@@ -1068,6 +1080,15 @@ packages:
 
   debug@4.3.6:
     resolution: {integrity: sha512-O/09Bd4Z1fBrU4VzkhFqVgpPzaGbw6Sm9FEkBT1A/YBXQFGuuSxa1dN2nxgxS34JmKXqYx8CZAwEVoJFImUXIg==}
+    engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
+
+  debug@4.4.0:
+    resolution: {integrity: sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==}
     engines: {node: '>=6.0'}
     peerDependencies:
       supports-color: '*'
@@ -1252,6 +1273,10 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
+  globals@15.14.0:
+    resolution: {integrity: sha512-OkToC372DtlQeje9/zHIo5CT8lRP/FUgEOKBEhU4e0abL7J7CD24fD9ohiLN5hagG/kWCYj4K5oaxxtj2Z0Dig==}
+    engines: {node: '>=18'}
+
   globalyzer@0.1.0:
     resolution: {integrity: sha512-40oNTM9UfG6aBmuKxk/giHn5nQ8RVz/SS4Ir6zgzOv9/qC3kKZ9v4etGTcJbEl/NyVQH7FGU7d+X1egr57Md2Q==}
 
@@ -1359,6 +1384,10 @@ packages:
     resolution: {integrity: sha512-ok6z3qlYyCDS4ZEU27HaU6x/xZa9Whf8jD4ptH5UZTQYZVYeb9bnZ3ojVhiJNLiXK1Hfc0GNbLXcmZ5plLDDBg==}
     engines: {node: '>=14'}
 
+  local-pkg@0.5.1:
+    resolution: {integrity: sha512-9rrA30MRRP3gBD3HTGnC6cDFpaE1kVDWxWgqWJUN0RvDNAo+Nz/9GxB+nHOH0ifbVFy0hSA1V6vFDvnx54lTEQ==}
+    engines: {node: '>=14'}
+
   locate-character@3.0.0:
     resolution: {integrity: sha512-SW13ws7BjaeJ6p7Q6CO2nchbYEc3X3J6WrmTTDto7yMPqVSZTUyY5Tjbid+Ab8gLnATtygYtiDIJGQRRn2ZOiA==}
 
@@ -1420,6 +1449,9 @@ packages:
   mlly@1.7.1:
     resolution: {integrity: sha512-rrVRZRELyQzrIUAVMHxP97kv+G786pHmOKzuFII8zDYahFBS7qnHh2AlYSl1GAHhaMPCz6/oHjVMcfFYgFYHgA==}
 
+  mlly@1.7.3:
+    resolution: {integrity: sha512-xUsx5n/mN0uQf4V548PKQ+YShA4/IW0KI1dZhrNrPCLG+xizETbHTkOa1f8/xut9JRPp8kQuMnz0oqwkTiLo/A==}
+
   mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
     engines: {node: '>=4'}
@@ -1430,6 +1462,9 @@ packages:
 
   ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
+
+  ms@2.1.3:
+    resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
   nanoid@3.3.8:
     resolution: {integrity: sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w==}
@@ -1502,6 +1537,9 @@ packages:
 
   pkg-types@1.1.3:
     resolution: {integrity: sha512-+JrgthZG6m3ckicaOB74TwQ+tBWsFl3qVQg7mN8ulwSOElJ7gBhKzj2VkCPnZ4NlF6kEquYU+RIYNVAvzd54UA==}
+
+  pkg-types@1.3.0:
+    resolution: {integrity: sha512-kS7yWjVFCkIw9hqdJBoMxDdzEngmkr5FXeWZZfQ6GoYacjVnsW6l2CcYW/0ThD0vF4LPJgVYnrg4d0uuhwYQbg==}
 
   postcss@8.4.47:
     resolution: {integrity: sha512-56rxCq7G/XfB4EkXq9Egn5GCqugWvDFjafDOThIdMBsI15iqPqR5r15TfSr1YPYeEI19YeaXMCbY6u88Y76GLQ==}
@@ -2006,6 +2044,19 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@iconify/utils@2.2.1':
+    dependencies:
+      '@antfu/install-pkg': 0.4.1
+      '@antfu/utils': 0.7.10
+      '@iconify/types': 2.0.0
+      debug: 4.4.0
+      globals: 15.14.0
+      kolorist: 1.8.0
+      local-pkg: 0.5.1
+      mlly: 1.7.3
+    transitivePeerDependencies:
+      - supports-color
+
   '@jridgewell/gen-mapping@0.3.5':
     dependencies:
       '@jridgewell/set-array': 1.2.1
@@ -2352,6 +2403,8 @@ snapshots:
 
   '@unocss/core@0.64.1': {}
 
+  '@unocss/core@0.65.3': {}
+
   '@unocss/extractor-arbitrary-variants@0.63.6':
     dependencies:
       '@unocss/core': 0.63.6
@@ -2391,6 +2444,14 @@ snapshots:
     dependencies:
       '@iconify/utils': 2.1.33
       '@unocss/core': 0.64.1
+      ofetch: 1.4.1
+    transitivePeerDependencies:
+      - supports-color
+
+  '@unocss/preset-icons@0.65.3':
+    dependencies:
+      '@iconify/utils': 2.2.1
+      '@unocss/core': 0.65.3
       ofetch: 1.4.1
     transitivePeerDependencies:
       - supports-color
@@ -2660,6 +2721,8 @@ snapshots:
 
   confbox@0.1.7: {}
 
+  confbox@0.1.8: {}
+
   consola@3.2.3: {}
 
   cookie@0.6.0: {}
@@ -2692,6 +2755,10 @@ snapshots:
   debug@4.3.6:
     dependencies:
       ms: 2.1.2
+
+  debug@4.4.0:
+    dependencies:
+      ms: 2.1.3
 
   deep-is@0.1.4: {}
 
@@ -2916,6 +2983,8 @@ snapshots:
 
   globals@14.0.0: {}
 
+  globals@15.14.0: {}
+
   globalyzer@0.1.0: {}
 
   globby@11.1.0:
@@ -3015,6 +3084,11 @@ snapshots:
       mlly: 1.7.1
       pkg-types: 1.1.3
 
+  local-pkg@0.5.1:
+    dependencies:
+      mlly: 1.7.3
+      pkg-types: 1.3.0
+
   locate-character@3.0.0: {}
 
   locate-path@6.0.0:
@@ -3074,11 +3148,20 @@ snapshots:
       pkg-types: 1.1.3
       ufo: 1.5.4
 
+  mlly@1.7.3:
+    dependencies:
+      acorn: 8.14.0
+      pathe: 1.1.2
+      pkg-types: 1.3.0
+      ufo: 1.5.4
+
   mri@1.2.0: {}
 
   mrmime@2.0.0: {}
 
   ms@2.1.2: {}
+
+  ms@2.1.3: {}
 
   nanoid@3.3.8: {}
 
@@ -3143,6 +3226,12 @@ snapshots:
     dependencies:
       confbox: 0.1.7
       mlly: 1.7.1
+      pathe: 1.1.2
+
+  pkg-types@1.3.0:
+    dependencies:
+      confbox: 0.1.8
+      mlly: 1.7.3
       pathe: 1.1.2
 
   postcss@8.4.47:
