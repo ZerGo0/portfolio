@@ -1,10 +1,9 @@
 module backend
 
 go 1.22.5
-
 require (
 	github.com/gofiber/fiber/v2 v2.52.6
-	github.com/jackc/pgx/v5 v5.7.2
+	github.com/jackc/pgx/v5 v5.7.4
 	github.com/joho/godotenv v1.5.1
 	github.com/testcontainers/testcontainers-go v0.35.0
 	github.com/testcontainers/testcontainers-go/modules/postgres v0.35.0
