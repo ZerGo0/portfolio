@@ -42,8 +42,8 @@ importers:
         specifier: ^8.25.0
         version: 8.25.0(eslint@9.17.0(jiti@2.4.2))(typescript@5.7.2)
       '@unocss/core':
-        specifier: ^0.62.2
-        version: 0.62.2
+        specifier: ^66.0.0
+        version: 66.0.0
       '@unocss/extractor-svelte':
         specifier: ^0.65.3
         version: 0.65.3
@@ -1041,9 +1041,6 @@ packages:
     resolution: {integrity: sha512-Z3tnQ10UjM09Y1yVqfCYfZEh2pXFQlUQ1g188mMWxjXWEIXeei3f9dIApRBgC+xcPE6prqdu3fDC5emU+sqyxw==}
     engines: {node: '>=14'}
 
-  '@unocss/core@0.62.2':
-    resolution: {integrity: sha512-86jEFUJ/PSwdb1qqiEi0lWlewfKLQwiH+JAfnh8c2hLjOPVmCkb0nnsYSMh8drmtN5kpk6E06mN0IrKMO7OnvQ==}
-
   '@unocss/core@0.63.6':
     resolution: {integrity: sha512-Q4QPgJ271Up89+vIqqOKgtdCKkFpHqvHN8W1LUlKPqtYnOvVYaOIVNAZowaIdEhPuc83yLc6Tg2+7riK18QKEw==}
 
@@ -1052,6 +1049,9 @@ packages:
 
   '@unocss/core@65.4.3':
     resolution: {integrity: sha512-luFgdcchSlNrYSaDvU2176T2PPQZdxqfREVbxEXNXlFEgyEFrx5hOSUXoJtJSZjRhAcE6zkWyLDf/JkQJ5Eeyw==}
+
+  '@unocss/core@66.0.0':
+    resolution: {integrity: sha512-PdVbSMHNDDkr++9nkqzsZRAkaU84gxMTEgYbqI7dt2p1DXp/5tomVtmMsr2/whXGYKRiUc0xZ3p4Pzraz8TcXA==}
 
   '@unocss/extractor-arbitrary-variants@0.63.6':
     resolution: {integrity: sha512-HJX0oAa9uzwKYoU8CoJdP1gxjuqFmOLxyZmITjStAmZNZpIxlz2wz4VrHmqml2dkvx/mifGGGc/GxZpQ36D12Q==}
@@ -2759,13 +2759,13 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@unocss/core@0.62.2': {}
-
   '@unocss/core@0.63.6': {}
 
   '@unocss/core@0.65.3': {}
 
   '@unocss/core@65.4.3': {}
+
+  '@unocss/core@66.0.0': {}
 
   '@unocss/extractor-arbitrary-variants@0.63.6':
     dependencies:
