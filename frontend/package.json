@@ -26,7 +26,7 @@
 		"@unocss/core": "^66.0.0",
 		"@unocss/extractor-svelte": "^0.65.3",
 		"@unocss/preset-icons": "^0.65.3",
-		"@unocss/svelte-scoped": "^0.63.6",
+		"@unocss/svelte-scoped": "^0.65.0",
 		"dayjs": "^1.11.13",
 		"dompurify": "^3.2.4",
 		"eslint": "^9.17.0",
