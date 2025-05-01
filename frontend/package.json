@@ -22,7 +22,7 @@
 		"@types/marked": "^6.0.0",
 		"@types/prismjs": "^1.26.5",
 		"@typescript-eslint/eslint-plugin": "^8.22.0",
-		"@typescript-eslint/parser": "^8.25.0",
+		"@typescript-eslint/parser": "^8.31.1",
 		"@unocss/core": "^66.0.0",
 		"@unocss/extractor-svelte": "^0.65.3",
 		"@unocss/preset-icons": "^0.65.3",
