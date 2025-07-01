@@ -23,7 +23,7 @@
 		"@types/prismjs": "^1.26.5",
 		"@typescript-eslint/eslint-plugin": "^8.22.0",
 		"@typescript-eslint/parser": "^8.31.1",
-		"@unocss/core": "^66.0.0",
+		"@unocss/core": "^66.3.2",
 		"@unocss/extractor-svelte": "^66.0.0",
 		"@unocss/preset-icons": "^66.0.0",
 		"@unocss/svelte-scoped": "^66.0.0",
