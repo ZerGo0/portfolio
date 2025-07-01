@@ -12,7 +12,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
-		"@iconify-json/carbon": "^1.2.8",
+		"@iconify-json/carbon": "^1.2.10",
 		"@riadh-adrani/utils": "1.0.0",
 		"@sveltejs/adapter-auto": "6.0.1",
 		"@sveltejs/adapter-static": "3.0.8",
