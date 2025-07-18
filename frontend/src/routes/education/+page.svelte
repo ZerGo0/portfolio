@@ -10,25 +10,29 @@
   import { getHumanReadableDate } from '$lib/utils';
   import { items, title } from '@data/education';
 
-  let search = '';
+  let search = $state('');
 
-  let result: Array<Education> = $state(items);
+  let result: Array<Education> = $derived.by(() => {
+    const query = search.trim().toLowerCase();
 
-  const onSearch = (s: string) => {
-    result = items.filter((it) => {
+    if (query.length === 0) {
+      return items;
+    }
+
+    return items.filter((it) => {
       return (
-        it.degree.toLowerCase().includes(s) ||
-        it.description.toLowerCase().includes(s) ||
-        it.location.toLowerCase().includes(s) ||
-        it.name.toLowerCase().includes(s) ||
-        it.organization.toLowerCase().includes(s) ||
-        it.subjects.some((it) => it.toLowerCase().includes(s))
+        it.degree.toLowerCase().includes(query) ||
+        it.description.toLowerCase().includes(query) ||
+        it.location.toLowerCase().includes(query) ||
+        it.name.toLowerCase().includes(query) ||
+        it.organization.toLowerCase().includes(query) ||
+        it.subjects.some((it) => it.toLowerCase().includes(query))
       );
     });
-  };
+  });
 </script>
 
-<SearchPage {title} {search} onsearch={onSearch}>
+<SearchPage {title} bind:search>
   <div class="col items-center relative mt-10 flex-1">
     {#if result.length === 0}
       <div class="p-5 col-center gap-3 m-y-auto text-[var(--accent-text)] flex-1">
