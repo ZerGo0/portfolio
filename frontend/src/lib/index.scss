@@ -368,16 +368,36 @@ body {
   }
 }
 
-/* Fix for dark logos in dark mode */
+/* Fix for specific dark logos in dark mode */
 :root[data-theme='dark'] {
-  /* Apply inversion to all logos by default */
-  .logo-img {
-    filter: invert(0.85) brightness(1.1);
+  /* Only invert specific dark logos in img elements */
+  img[src*='nextjs.svg'],
+  img[src*='vercel.svg'],
+  img[src*='stripe.svg'],
+  img[src*='drizzle.svg'],
+  img[src*='resend.svg'],
+  img[src*='express.png'],
+  img[src*='github-actions.svg'] {
+    filter: invert(0.9) brightness(1.1);
     transition: filter 0.2s ease;
   }
 
-  /* Skip inversion for already inverted logos in ChipIcon */
-  .logo-img.invert-100 {
-    filter: none;
+  /* Special handling for background images in Cards and Banners */
+  .card[style*='nextjs.svg'],
+  .card[style*='vercel.svg'],
+  .card[style*='stripe.svg'],
+  .card[style*='drizzle.svg'],
+  .card[style*='resend.svg'],
+  .card[style*='express.png'],
+  .card[style*='github-actions.svg'],
+  .skill-cover[style*='nextjs.svg'],
+  .skill-cover[style*='vercel.svg'],
+  .skill-cover[style*='stripe.svg'],
+  .skill-cover[style*='drizzle.svg'],
+  .skill-cover[style*='resend.svg'],
+  .skill-cover[style*='express.png'],
+  .skill-cover[style*='github-actions.svg'] {
+    filter: invert(0.9) brightness(1.1);
+    transition: filter 0.2s ease;
   }
 }
