@@ -89,7 +89,14 @@ const Assets = {
   Drizzle: a('drizzle.svg', undefined, true),
   Resend: a('resend.svg', undefined, true),
   Vercel: a('vercel.svg', undefined, true),
-  Wishly: a('wishly.svg')
+  Wishly: a('wishly.svg'),
+  MariaDB: a('mariadb.svg'),
+  ChartJs: a('chartjs.svg'),
+  SvelteKit: a('svelte.png'),
+  GORM: a('gorm.svg'),
+  Fiber: a('fiber.svg', 'fiber-dark.svg'),
+  Zap: a('zap.png'),
+  StreamerBot: a('streamerbot.svg')
 };
 
 export default Assets;
