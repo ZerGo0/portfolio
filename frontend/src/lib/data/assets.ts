@@ -4,8 +4,8 @@ import type { Asset } from '$lib/types';
 
 const gh = (file: string) => `${base}/logos/${file}`;
 
-const a = (light: string, dark?: string): Asset =>
-  dark ? { dark: gh(dark), light: gh(light) } : gh(light);
+const a = (light: string, dark?: string, black?: boolean): Asset =>
+  dark ? { dark: gh(dark), light: gh(light), black: black ?? false } : gh(light);
 
 const Assets = {
   AWS: a('aws.svg'),
@@ -73,22 +73,22 @@ const Assets = {
   Postcss: a('postcss.svg'),
   DotNet: a('dotnet.svg'),
   MSSQL: a('mssql.svg'),
-  AzurePipelines: a('azure-pipelines.svg'),
+  AzurePipelines: a('azure-pipelines.svg', undefined, true),
   AzureDevOps: a('azure-devops.svg'),
   ForSellers: a('4sellers.png'),
   NAT: a('nat.png'),
   DotTrace: a('dottrace.svg'),
   DotMemory: a('dotmemory.png'),
   MySql: a('mysql.svg'),
-  GithubActions: a('github-actions.svg'),
+  GithubActions: a('github-actions.svg', undefined, true),
   Cloudflare: a('cloudflare.svg'),
   Less: a('less.svg'),
-  NextJs: a('nextjs.svg'),
-  Stripe: a('stripe.svg'),
-  Supabase: a('supabase.svg'),
-  Drizzle: a('drizzle.svg'),
-  Resend: a('resend.svg'),
-  Vercel: a('vercel.svg'),
+  NextJs: a('nextjs.svg', undefined, true),
+  Stripe: a('stripe.svg', undefined, true),
+  Supabase: a('supabase.svg', undefined, true),
+  Drizzle: a('drizzle.svg', undefined, true),
+  Resend: a('resend.svg', undefined, true),
+  Vercel: a('vercel.svg', undefined, true),
   Wishly: a('wishly.svg')
 };
 
