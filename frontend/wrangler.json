@@ -8,7 +8,7 @@
     "binding": "ASSETS"
   },
   "build": {
-    "command": "pnpm run build"
+    "command": "pnpm install && pnpm run build"
   },
   "routes": [
     {
