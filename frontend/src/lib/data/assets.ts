@@ -93,10 +93,10 @@ const Assets = {
   MariaDB: a('mariadb.svg'),
   ChartJs: a('chartjs.svg'),
   SvelteKit: a('svelte.png'),
-  GORM: a('no-img.svg'),
-  Fiber: a('no-img.svg'),
-  Zap: a('no-img.svg'),
-  StreamerBot: a('no-img.svg')
+  GORM: a('gorm.svg'),
+  Fiber: a('fiber.svg', 'fiber-dark.svg'),
+  Zap: a('zap.png'),
+  StreamerBot: a('streamerbot.svg')
 };
 
 export default Assets;

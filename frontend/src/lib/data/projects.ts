@@ -12,7 +12,7 @@ Key Technologies:
 - Frontend: Built with Svelte 5 and SvelteKit 2 for optimal performance
 - Styling: Tailwind CSS 4 with advanced UI components (Bits-ui, Lucide icons)
 - Backend: High-performance Go backend using Fiber v2 framework
-- Database: MySQL with GORM ORM for efficient data management
+- Database: MariaDB with GORM ORM for efficient data management
 - Deployment: Cloudflare Workers for global edge deployment
 
 Features include:
@@ -30,7 +30,7 @@ Features include:
     logo: Assets.Unknown,
     name: 'FToolbox',
     period: {
-      from: new Date(2024, 0, 1)
+      from: new Date(2025, 5, 11)
     },
     skills: getSkills(
       'svelte',
@@ -47,13 +47,7 @@ Features include:
       'docker',
       'cloudflare'
     ),
-    type: 'Web Application',
-    screenshots: [
-      {
-        label: 'Main Interface',
-        src: '/assets/projects/ftoolbox/1.webp'
-      }
-    ]
+    type: 'Web Application'
   },
   {
     slug: 'fansly-streamerbot',
@@ -72,16 +66,13 @@ Key Features:
 - Detailed metadata tracking (username, user ID, message content, tip amounts)
 - Custom trigger system for Streamer.bot automation
 - Built-in debugging and diagnostic logging
-- Easy installation with GitHub releases
-
-Latest Version: 1.0.2 (July 2025)
-Open source under MIT License with active community support via Discord.`,
+- Easy installation with GitHub releases`,
     shortDescription: 'Streamer.bot extension for Fansly livestream chat integration.',
     links: [{ to: 'https://github.com/ZerGo0/fansly.streamerbot', label: 'GitHub' }],
     logo: Assets.Unknown,
     name: 'Fansly Streamer.bot Extension',
     period: {
-      from: new Date(2025, 6, 1)
+      from: new Date(2025, 6, 3)
     },
     skills: getSkills('csharp', 'dotnet', 'streamerbot'),
     type: 'Streaming Tool / Extension',
