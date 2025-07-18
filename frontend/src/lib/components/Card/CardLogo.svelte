@@ -10,10 +10,4 @@
   let { src, alt, size = 50, radius = '15px', classes = '' }: Props = $props();
 </script>
 
-<img
-  class={`rounded-${radius} ${classes} aspect-square logo-img`}
-  {src}
-  {alt}
-  height={size}
-  width={size}
-/>
+<img class={`rounded-${radius} ${classes} aspect-square`} {src} {alt} height={size} width={size} />

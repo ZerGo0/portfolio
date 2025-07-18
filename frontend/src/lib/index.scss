@@ -367,17 +367,3 @@ body {
     }
   }
 }
-
-/* Fix for dark logos in dark mode */
-:root[data-theme='dark'] {
-  /* Apply inversion to all logos by default */
-  .logo-img {
-    filter: invert(0.85) brightness(1.1);
-    transition: filter 0.2s ease;
-  }
-
-  /* Skip inversion for already inverted logos in ChipIcon */
-  .logo-img.invert-100 {
-    filter: none;
-  }
-}

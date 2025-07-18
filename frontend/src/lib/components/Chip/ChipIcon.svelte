@@ -30,7 +30,7 @@
       {@render children?.()}
     {:else}
       <img
-        class={`w-15px h-15px logo-img ${inverted ? 'invert-100' : ''}`}
+        class={`w-15px h-15px ${inverted ? 'invert-100' : ''}`}
         class:chip-icon-logo-inverted={$theme && inverted}
         src={logo}
         alt={name}
@@ -46,7 +46,7 @@
       {@render children?.()}
     {:else}
       <img
-        class={`w-15px h-15px logo-img ${inverted ? 'invert-100' : ''}`}
+        class={`w-15px h-15px ${inverted ? 'invert-100' : ''}`}
         class:chip-icon-logo-inverted={$theme && inverted}
         src={logo}
         alt={name}
