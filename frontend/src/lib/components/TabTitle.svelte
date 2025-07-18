@@ -1,10 +1,14 @@
 <script lang="ts">
-	import { titleSuffix } from '@data/app';
-	import { useTitle } from '$lib/utils/helpers';
+  import { titleSuffix } from '@data/app';
+  import { useTitle } from '$lib/utils/helpers';
 
-	export let title: string;
+  interface Props {
+    title: string;
+  }
+
+  let { title }: Props = $props();
 </script>
 
 <svelte:head>
-	<title>{useTitle(title, titleSuffix)}</title>
+  <title>{useTitle(title, titleSuffix)}</title>
 </svelte:head>

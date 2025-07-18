@@ -1,31 +1,40 @@
 <script lang="ts">
-	import { gfmHeadingId } from 'marked-gfm-heading-id';
-	import { mangle } from 'marked-mangle';
-	import Prism from 'prismjs';
-	import createSanitizer from 'dompurify';
-	import { marked } from 'marked';
-	import 'prismjs/components/prism-typescript';
-	import 'prismjs/themes/prism-tomorrow.css';
-	import { onMount } from 'svelte';
+  import createSanitizer from 'dompurify';
+  import { marked } from 'marked';
+  import { gfmHeadingId } from 'marked-gfm-heading-id';
+  import { mangle } from 'marked-mangle';
+  import Prism from 'prismjs';
+  import 'prismjs/components/prism-typescript';
+  import 'prismjs/themes/prism-tomorrow.css';
 
-	let container: HTMLDivElement;
+  let container: HTMLDivElement | undefined = $state();
 
-	export let content: string;
+  interface Props {
+    content: string;
+  }
 
-	onMount(() => {
-		marked.use(gfmHeadingId());
-		marked.use(mangle());
+  let { content }: Props = $props();
 
-		const sanitizer = createSanitizer(window);
+  let sanitizedContent = $state('');
 
-		if (window) {
-			const parsed = marked.parse(content);
+  $effect(() => {
+    marked.use(gfmHeadingId());
+    marked.use(mangle());
 
-			container.innerHTML = sanitizer.sanitize(parsed);
+    if (typeof window !== 'undefined') {
+      const sanitizer = createSanitizer(window);
+      const parsed = marked.parse(content);
+      sanitizedContent = sanitizer.sanitize(parsed as string);
 
-			Prism.highlightAllUnder(container);
-		}
-	});
+      // Use a microtask to ensure DOM is updated before highlighting
+      queueMicrotask(() => {
+        if (container) {
+          Prism.highlightAllUnder(container);
+        }
+      });
+    }
+  });
 </script>
 
-<div bind:this={container} class="markdown-container" />
+<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+<div bind:this={container} class="markdown-container">{@html sanitizedContent}</div>

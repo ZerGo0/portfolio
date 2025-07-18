@@ -1,101 +1,98 @@
 <script lang="ts">
-	import { getAssetURL } from '$lib/data/assets';
-	import type { Skill } from '$lib/types';
-	import { onMount } from 'svelte';
-	import UIcon from '../Icon/UIcon.svelte';
+  import { getAssetURL } from '$lib/data/assets';
+  import type { Skill } from '$lib/types';
+  import UIcon from '../Icon/UIcon.svelte';
 
-	export let items: Array<Skill> = [];
-	const delay = 2000;
+  interface Props {
+    items?: Array<Skill>;
+  }
 
-	let element: HTMLElement;
+  let { items = [] }: Props = $props();
+  const delay = 2000;
 
-	let timeout: unknown;
-	let index = 0;
-	let toRight = true;
+  let element: HTMLElement | undefined = $state();
 
-	$: {
-		if (element) {
-			element.scroll({
-				left: index * 150,
-				behavior: 'smooth'
-			});
-		}
-	}
+  let timeout: unknown;
+  let index = $state(0);
+  let toRight = true;
 
-	const slide = (right: boolean) => {
-		if (right) {
-			if (index < items.length - 1) {
-				index = index + 1;
-			} else {
-				index = index - 1;
-				toRight = false;
-			}
-		} else {
-			if (index > 0) {
-				index = index - 1;
-			} else {
-				index = index + 1;
-				toRight = true;
-			}
-		}
-	};
+  $effect(() => {
+    if (element) {
+      element.scroll({
+        left: index * 150,
+        behavior: 'smooth'
+      });
+    }
+  });
 
-	const toggle = (right: boolean) => {
-		clearTimeout(timeout as number);
+  const slide = (right: boolean) => {
+    if (right) {
+      if (index < items.length - 1) {
+        index = index + 1;
+      } else {
+        index = index - 1;
+        toRight = false;
+      }
+    } else {
+      if (index > 0) {
+        index = index - 1;
+      } else {
+        index = index + 1;
+        toRight = true;
+      }
+    }
+  };
 
-		timeout = setTimeout(() => {
-			slide(right);
+  const toggle = (right: boolean) => {
+    clearTimeout(timeout as number);
 
-			toggle(toRight);
-		}, delay);
-	};
+    timeout = setTimeout(() => {
+      slide(right);
 
-	const toggleLeft = () => {
-		clearTimeout(timeout as number);
-		toRight = false;
-		slide(false);
-		toggle(toRight);
-	};
+      toggle(toRight);
+    }, delay);
+  };
 
-	const toggleRight = () => {
-		clearTimeout(timeout as number);
-		toRight = true;
-		slide(true);
-		toggle(toRight);
-	};
+  const toggleLeft = () => {
+    clearTimeout(timeout as number);
+    toRight = false;
+    slide(false);
+    toggle(toRight);
+  };
 
-	onMount(() => {
-		toggle(true);
-	});
+  const toggleRight = () => {
+    clearTimeout(timeout as number);
+    toRight = true;
+    slide(true);
+    toggle(toRight);
+  };
+
+  $effect(() => {
+    toggle(true);
+  });
 </script>
 
 <div class="carrousel flex-[0.5] row-center">
-	<button
-		class="row-center font-500 p-5px m-y-0px m-x-10px cursor-pointer border-1px border-solid border-[var(--border)] bg-transparent rounded-[50%] hover:border-[var(--border-hover)]"
-		on:click={toggleLeft}
-		on:keyup
-		on:keydown
-		on:keypress
-	>
-		<UIcon icon="i-carbon-chevron-left" />
-	</button>
+  <button
+    class="row-center font-500 p-5px m-y-0px m-x-10px cursor-pointer border-1px border-solid border-[var(--border)] bg-transparent rounded-[50%] hover:border-[var(--border-hover)]"
+    onclick={toggleLeft}
+  >
+    <UIcon icon="i-carbon-chevron-left" />
+  </button>
 
-	<div bind:this={element} class="row overflow-hidden box-content w-150px">
-		{#each items as item}
-			<div class="box-content w-150px p-15px col-center">
-				<img class="w-120px h-120px aspect-square" src={getAssetURL(item.logo)} alt={item.name} />
-				<span class="text-center m-t-20px">{item.name}</span>
-			</div>
-		{/each}
-	</div>
+  <div bind:this={element} class="row overflow-hidden box-content w-150px">
+    {#each items as item (item.name)}
+      <div class="box-content w-150px p-15px col-center">
+        <img class="w-120px h-120px aspect-square" src={getAssetURL(item.logo)} alt={item.name} />
+        <span class="text-center m-t-20px">{item.name}</span>
+      </div>
+    {/each}
+  </div>
 
-	<button
-		class="row-center font-500 p-5px m-y-0px m-x-10px cursor-pointer border-1px border-solid border-[var(--border)] bg-transparent rounded-[50%] hover:border-[var(--border-hover)]"
-		on:click={toggleRight}
-		on:keyup
-		on:keydown
-		on:keypress
-	>
-		<UIcon icon="i-carbon-chevron-right" />
-	</button>
+  <button
+    class="row-center font-500 p-5px m-y-0px m-x-10px cursor-pointer border-1px border-solid border-[var(--border)] bg-transparent rounded-[50%] hover:border-[var(--border-hover)]"
+    onclick={toggleRight}
+  >
+    <UIcon icon="i-carbon-chevron-right" />
+  </button>
 </div>

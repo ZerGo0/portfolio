@@ -4,36 +4,36 @@ import { writable } from 'svelte/store';
 const key = 'dark-theme';
 
 const updateLocalStorage = (value: boolean) => {
-	if (browser) {
-		localStorage.setItem(key, JSON.stringify(value));
-	}
+  if (browser) {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
 };
 
 export const theme = writable<boolean>(false);
 
 export const toggleTheme = (value?: boolean) =>
-	theme.update((it) => {
-		const $v = typeof value === 'boolean' ? value : !it;
+  theme.update((it) => {
+    const $v = typeof value === 'boolean' ? value : !it;
 
-		updateLocalStorage($v);
+    updateLocalStorage($v);
 
-		document.querySelector(':root')?.setAttribute('data-theme', $v ? 'dark' : 'light');
+    document.querySelector(':root')?.setAttribute('data-theme', $v ? 'dark' : 'light');
 
-		return $v;
-	});
+    return $v;
+  });
 
 export const onHydrated = () => {
-	const fromStore = localStorage.getItem(key);
+  const fromStore = localStorage.getItem(key);
 
-	if (!fromStore) {
-		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			// dark mode
-			toggleTheme(true);
-		} else {
-			// light mode
-			toggleTheme(false);
-		}
-	} else {
-		toggleTheme(JSON.parse(fromStore));
-	}
+  if (!fromStore) {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      // dark mode
+      toggleTheme(true);
+    } else {
+      // light mode
+      toggleTheme(false);
+    }
+  } else {
+    toggleTheme(JSON.parse(fromStore));
+  }
 };

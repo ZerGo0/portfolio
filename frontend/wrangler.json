@@ -1,0 +1,23 @@
+{
+  "name": "portfolio-frontend",
+  "main": ".svelte-kit/cloudflare/_worker.js",
+  "compatibility_date": "2025-01-18",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".svelte-kit/cloudflare",
+    "binding": "ASSETS"
+  },
+  "build": {
+    "command": "pnpm run build"
+  },
+  "routes": [
+    {
+      "pattern": "zergo0.dev",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.zergo0.dev",
+      "custom_domain": true
+    }
+  ]
+}
