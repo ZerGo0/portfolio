@@ -50,13 +50,9 @@
       return isFiltered && isSearched;
     })
   );
-
-  const onSearch = (value: string) => {
-    search = value;
-  };
 </script>
 
-<SearchPage {title} bind:search onsearch={onSearch}>
+<SearchPage {title} bind:search>
   <div class="projects-filters">
     {#each filters as tech (tech.slug)}
       <Chip active={tech.isSelected} classes="text-0.8em" onclick={() => onSelected(tech.slug)}
