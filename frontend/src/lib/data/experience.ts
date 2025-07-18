@@ -11,7 +11,7 @@ export const items: Array<Experience> = [
     contract: ContractType.Contract,
     type: 'Software Development',
     location: 'Remote',
-    period: { from: new Date(2023, 8, 1), to: new Date(2024, 10, 1) },
+    period: { from: new Date(2025, 1, 3), to: new Date() },
     skills: getSkills(
       'nextjs',
       'react',
@@ -42,7 +42,7 @@ export const items: Array<Experience> = [
     contract: ContractType.FullTime,
     type: 'Software Development',
     location: 'Leipzig, Germany - Remote',
-    period: { from: new Date(2020, 8, 1) },
+    period: { from: new Date(2020, 8, 1), to: new Date(2025, 0, 31) },
     skills: getSkills(
       'dotnet',
       'js',
