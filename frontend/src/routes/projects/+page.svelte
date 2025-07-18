@@ -54,23 +54,9 @@
   const onSearch = (value: string) => {
     search = value;
   };
-
-  $effect(() => {
-    const query = location.search;
-
-    if (query) {
-      const queryParams = new URLSearchParams(location.search);
-
-      const item = queryParams.get('item');
-
-      if (item) {
-        search = item;
-      }
-    }
-  });
 </script>
 
-<SearchPage {title} onsearch={onSearch}>
+<SearchPage {title} bind:search onsearch={onSearch}>
   <div class="projects-filters">
     {#each filters as tech (tech.slug)}
       <Chip active={tech.isSelected} classes="text-0.8em" onclick={() => onSelected(tech.slug)}

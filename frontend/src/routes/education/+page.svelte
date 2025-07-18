@@ -10,7 +10,7 @@
   import { getHumanReadableDate } from '$lib/utils';
   import { items, title } from '@data/education';
 
-  let search = '';
+  let search = $state('');
 
   let result: Array<Education> = $state(items);
 
@@ -28,7 +28,7 @@
   };
 </script>
 
-<SearchPage {title} {search} onsearch={onSearch}>
+<SearchPage {title} bind:search onsearch={onSearch}>
   <div class="col items-center relative mt-10 flex-1">
     {#if result.length === 0}
       <div class="p-5 col-center gap-3 m-y-auto text-[var(--accent-text)] flex-1">
