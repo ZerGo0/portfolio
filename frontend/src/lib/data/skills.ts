@@ -279,6 +279,96 @@ export const items = [
     logo: Assets.Vercel,
     name: 'Vercel',
     category: 'devops'
+  }),
+  defineSkill({
+    slug: 'mariadb',
+    color: 'brown',
+    description:
+      'MariaDB is an open-source relational database management system, forked from MySQL with enhanced features.',
+    logo: Assets.MariaDB,
+    name: 'MariaDB',
+    category: 'db'
+  }),
+  defineSkill({
+    slug: 'chartjs',
+    color: 'pink',
+    description:
+      'Chart.js is a simple yet flexible JavaScript charting library for designers and developers.',
+    logo: Assets.ChartJs,
+    name: 'Chart.js',
+    category: 'library'
+  }),
+  defineSkill({
+    slug: 'sveltekit',
+    color: 'orange',
+    description:
+      'SvelteKit is a framework for building web applications with Svelte, providing routing, SSR, and more.',
+    logo: Assets.SvelteKit,
+    name: 'SvelteKit',
+    category: 'framework'
+  }),
+  defineSkill({
+    slug: 'gorm',
+    color: 'blue',
+    description:
+      'GORM is a developer-friendly ORM library for Go, providing a simple API for database operations.',
+    logo: Assets.GORM,
+    name: 'GORM',
+    category: 'orm'
+  }),
+  defineSkill({
+    slug: 'fiber',
+    color: 'blue',
+    description:
+      'Fiber is an Express-inspired web framework for Go, built on top of Fasthttp for extreme performance.',
+    logo: Assets.Fiber,
+    name: 'Fiber',
+    category: 'framework'
+  }),
+  defineSkill({
+    slug: 'zap',
+    color: 'yellow',
+    description:
+      'Zap is a blazing fast, structured, leveled logging library for Go with minimal allocations.',
+    logo: Assets.Zap,
+    name: 'Zap',
+    category: 'library'
+  }),
+  defineSkill({
+    slug: 'csharp',
+    color: 'purple',
+    description:
+      'C# is a modern, object-oriented programming language developed by Microsoft for the .NET platform.',
+    logo: Assets.Csharp,
+    name: 'C#',
+    category: 'pro-lang'
+  }),
+  defineSkill({
+    slug: 'vite',
+    color: 'purple',
+    description:
+      'Vite is a fast build tool that provides instant server start and lightning-fast HMR for modern web projects.',
+    logo: Assets.Vite,
+    name: 'Vite',
+    category: 'devtools'
+  }),
+  defineSkill({
+    slug: 'unocss',
+    color: 'gray',
+    description:
+      'UnoCSS is an instant on-demand atomic CSS engine with unified syntax and flexible presets.',
+    logo: Assets.Unocss,
+    name: 'UnoCSS',
+    category: 'framework'
+  }),
+  defineSkill({
+    slug: 'streamerbot',
+    color: 'purple',
+    description:
+      'Streamer.bot is a powerful automation tool for streamers, enabling custom actions and integrations.',
+    logo: Assets.StreamerBot,
+    name: 'Streamer.bot',
+    category: 'devtools'
   })
   // defineSkill({
   // 	slug: 'placeholder',

@@ -4,6 +4,95 @@ import { getSkills } from './skills';
 
 export const items: Array<Project> = [
   {
+    slug: 'ftoolbox',
+    color: 'green',
+    description: `A comprehensive web-based toolbox application built with modern technologies. FToolbox provides a collection of useful tools and utilities accessible through a fast and responsive web interface.
+
+Key Technologies:
+- Frontend: Built with Svelte 5 and SvelteKit 2 for optimal performance
+- Styling: Tailwind CSS 4 with advanced UI components (Bits-ui, Lucide icons)
+- Backend: High-performance Go backend using Fiber v2 framework
+- Database: MySQL with GORM ORM for efficient data management
+- Deployment: Cloudflare Workers for global edge deployment
+
+Features include:
+- Modern, responsive UI with theme switching
+- Data visualization with Chart.js
+- Form management with Formsnap and Superforms
+- Toast notifications with Svelte Sonner
+- High-performance backend with Zap logging
+- Brotli compression for optimized delivery`,
+    shortDescription: 'A modern web-based toolbox with various utilities and tools.',
+    links: [
+      { to: 'https://github.com/ZerGo0/FToolbox', label: 'GitHub' },
+      { to: 'https://ftoolbox.zergo0.dev/', label: 'Website' }
+    ],
+    logo: Assets.Unknown,
+    name: 'FToolbox',
+    period: {
+      from: new Date(2024, 0, 1)
+    },
+    skills: getSkills(
+      'svelte',
+      'sveltekit',
+      'ts',
+      'tailwind',
+      'go',
+      'fiber',
+      'mysql',
+      'mariadb',
+      'gorm',
+      'chartjs',
+      'vite',
+      'docker',
+      'cloudflare'
+    ),
+    type: 'Web Application',
+    screenshots: [
+      {
+        label: 'Main Interface',
+        src: '/assets/projects/ftoolbox/1.webp'
+      }
+    ]
+  },
+  {
+    slug: 'fansly-streamerbot',
+    color: 'purple',
+    description: `A specialized Streamer.bot extension that bridges Fansly chat with streaming automation workflows. This plugin enables streamers to integrate Fansly chat events directly into their Streamer.bot setup, allowing for automated responses and interactions.
+
+Technical Implementation:
+- Language: C# (.NET)
+- Real-time WebSocket connection for live chat processing
+- Event-driven architecture with modular handlers
+- Comprehensive event support (messages, tips, subscriptions)
+
+Key Features:
+- Real-time Fansly chat integration
+- Three main event types: Chat messages, Tips/donations, Subscription events
+- Detailed metadata tracking (username, user ID, message content, tip amounts)
+- Custom trigger system for Streamer.bot automation
+- Built-in debugging and diagnostic logging
+- Easy installation with GitHub releases
+
+Latest Version: 1.0.2 (July 2025)
+Open source under MIT License with active community support via Discord.`,
+    shortDescription: 'Streamer.bot extension for Fansly livestream chat integration.',
+    links: [{ to: 'https://github.com/ZerGo0/fansly.streamerbot', label: 'GitHub' }],
+    logo: Assets.Unknown,
+    name: 'Fansly Streamer.bot Extension',
+    period: {
+      from: new Date(2025, 6, 1)
+    },
+    skills: getSkills('csharp', 'dotnet', 'streamerbot'),
+    type: 'Streaming Tool / Extension',
+    screenshots: [
+      {
+        label: 'Extension Interface',
+        src: '/assets/projects/fansly-streamerbot/1.webp'
+      }
+    ]
+  },
+  {
     slug: 'fansly-bot',
     color: 'blue',
     description: `A sophisticated livestream chatbot designed for Fansly. The Platform allows creators to set up automated messages, commands, and much more. It also offers stream overlays and integrates seamlessly with third-party providers such as StreamElements, Streamlabs, and Discord. It is utilized by over 600 creators, collectively reaching an audience of more than 500,000 followers.
