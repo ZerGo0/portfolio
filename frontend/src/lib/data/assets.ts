@@ -5,29 +5,29 @@ import type { Asset } from '$lib/types';
 const gh = (file: string) => `${base}/logos/${file}`;
 
 const a = (light: string, dark?: string, black?: boolean): Asset =>
-  dark ? { dark: gh(dark), light: gh(light), black: black ?? false } : gh(light);
+  dark || black ? { dark: gh(dark || light), light: gh(light), black: black ?? false } : gh(light);
 
 const Assets = {
   AWS: a('aws.svg'),
   Bootstrap: a('bootstrap.svg'),
   C: a('c.svg'),
   Cpp: a('cpp.svg'),
-  Celery: a('celery.svg'),
+  Celery: a('celery.svg', undefined, true),
   Django: a('django.svg'),
   FastApi: a('fastapi'),
-  Flask: a('flask.svg'),
+  Flask: a('flask.svg', undefined, true),
   Go: a('go.svg'),
-  Kafka: a('kafka.svg'),
+  Kafka: a('kafka.svg', undefined, true),
   Neo4j: a('neo4j.svg'),
-  Nginx: a('nginx.svg'),
+  Nginx: a('nginx.svg', undefined, true),
   Numpy: a('numpy.svg'),
-  Pandas: a('pandas.svg'),
+  Pandas: a('pandas.svg', undefined, true),
   RabbitMQ: a('rabbitmq.svg'),
   Rust: a('rust.svg', 'rust-dark.png'),
   Scrapy: a('scrapy.png'),
   Selenium: a('selenium.svg'),
   Docker: a('docker.svg'),
-  Kubernetes: a('kubernetes.svg'),
+  Kubernetes: a('kubernetes.svg', undefined, true),
   Csharp: a('csharp.svg'),
   Xamarin: a('xamarin.svg'),
   TypeScript: a('ts.png'),
@@ -51,7 +51,7 @@ const Assets = {
   AdonisJs: a('adonis.png'),
   Android: a('android.png'),
   Angular: a('angular.png'),
-  PostgreSQL: a('postgres.png'),
+  PostgreSQL: a('postgresql.svg', undefined, true),
   Firebase: a('firebase.png'),
   Sass: a('sass.png'),
   Unknown: a('no-img.svg'),
@@ -59,17 +59,17 @@ const Assets = {
   Redis: a('redis.svg'),
   Tailwind: a('tailwind.svg'),
   HTML: a('html.svg'),
-  Premiere: a('premiere.svg'),
-  Photoshop: a('photoshop.svg'),
-  CSS: a('css.svg'),
-  AfterEffects: a('after-effects.svg'),
+  Premiere: a('premiere.svg', undefined, true),
+  Photoshop: a('photoshop.svg', undefined, true),
+  CSS: a('css.svg', undefined, true),
+  AfterEffects: a('after-effects.svg', undefined, true),
   Illustrator: a('illustrator.svg'),
   Nuxt: a('nuxt.png'),
   Vite: a('vite.png'),
   Vitest: a('vitest.svg'),
   Jest: a('jest.png'),
   Unocss: a('unocss.svg'),
-  Ruvy: a('ruvy.svg'),
+  Ruvy: a('ruvy.svg', undefined, true),
   Postcss: a('postcss.svg'),
   DotNet: a('dotnet.svg'),
   MSSQL: a('mssql.svg'),
@@ -82,7 +82,7 @@ const Assets = {
   MySql: a('mysql.svg'),
   GithubActions: a('github-actions.svg', undefined, true),
   Cloudflare: a('cloudflare.svg'),
-  Less: a('less.svg'),
+  Less: a('less.svg', undefined, true),
   NextJs: a('nextjs.svg', undefined, true),
   Stripe: a('stripe.svg', undefined, true),
   Supabase: a('supabase.svg', undefined, true),
@@ -100,4 +100,8 @@ theme.subscribe((v) => (currentTheme = v));
 
 export const getAssetURL = (asset: Asset): string => {
   return typeof asset === 'string' ? asset : currentTheme ? asset.dark : asset.light;
+};
+
+export const isBlackAsset = (asset: Asset): boolean => {
+  return typeof asset === 'string' ? false : asset.black;
 };

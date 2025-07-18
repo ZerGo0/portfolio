@@ -4,7 +4,8 @@
   import * as experiences from '@data/experience';
 
   import { base } from '$app/paths';
-  import { getAssetURL } from '$lib/data/assets';
+  import { getAssetURL, isBlackAsset } from '$lib/data/assets';
+  import type { Asset } from '$lib/types';
 
   import type { Skill } from '$lib/types';
 
@@ -21,6 +22,7 @@
     display: string;
     name: string;
     img: string;
+    logo: Asset;
     type: 'projects' | 'experience';
     url: string;
   };
@@ -44,6 +46,7 @@
       if (item.skills.some((tech) => tech.slug === skill.slug)) {
         out.push({
           img: getAssetURL(item.logo),
+          logo: item.logo,
           display: `${item.name} (${item.type})`,
           name: item.name,
           type: 'projects',
@@ -56,6 +59,7 @@
       if (item.skills.some((tech) => tech.slug === skill.slug)) {
         out.push({
           img: getAssetURL(item.logo),
+          logo: item.logo,
           display: `${item.name} @ ${item.company}`,
           name: item.name,
           type: 'experience',
@@ -82,7 +86,7 @@
     </div>
   {:else}
     <div class="flex flex-col items-center overflow-x-hidden">
-      <Banner img={getAssetURL(data.skill.logo)}>
+      <Banner img={getAssetURL(data.skill.logo)} imgBlack={isBlackAsset(data.skill.logo)}>
         <MainTitle>{data.skill.name}</MainTitle>
       </Banner>
       <div class="pt-3 pb-1 overflow-x-hidden w-full">
@@ -107,7 +111,14 @@
               classes="inline-flex flex-row items-center justify-center"
               href={`${base}${item.url}`}
             >
-              <CardLogo src={item.img} alt={item.name} radius="0px" size={15} classes="mr-2" />
+              <CardLogo
+                src={item.img}
+                alt={item.name}
+                radius="0px"
+                size={15}
+                classes="mr-2"
+                black={isBlackAsset(item.logo)}
+              />
               <span class="text-[0.9em]">{item.display}</span>
             </Chip>
           {/each}

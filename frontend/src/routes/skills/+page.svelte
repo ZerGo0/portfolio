@@ -1,6 +1,6 @@
 <script lang="ts">
   import { base } from '$app/paths';
-  import { getAssetURL } from '$lib/data/assets';
+  import { getAssetURL, isBlackAsset } from '$lib/data/assets';
   import { groupByCategory, title } from '@data/skills';
 
   import Card from '$lib/components/Card/Card.svelte';
@@ -36,6 +36,7 @@
                 tiltDegree={1}
                 href={`${base}/skills/${skill.slug}`}
                 bgImg={getAssetURL(skill.logo)}
+                bgImgBlack={isBlackAsset(skill.logo)}
                 color={skill.color}
               >
                 <p class="text-[var(--tertiary-text)]">{skill.name}</p>

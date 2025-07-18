@@ -1,6 +1,6 @@
 <script lang="ts">
   import { base } from '$app/paths';
-  import { getAssetURL } from '$lib/data/assets';
+  import { getAssetURL, isBlackAsset } from '$lib/data/assets';
   import type { Project } from '$lib/types';
   import { computeExactDuration, getMonthName } from '$lib/utils/helpers';
   import Card from '../Card/Card.svelte';
@@ -68,7 +68,7 @@
   <CardDivider />
   <div class="row flex-wrap">
     {#each project.skills as tech (tech.name)}
-      <ChipIcon logo={getAssetURL(tech.logo)} name={tech.name} />
+      <ChipIcon logo={getAssetURL(tech.logo)} name={tech.name} black={isBlackAsset(tech.logo)} />
     {/each}
   </div>
 </Card>

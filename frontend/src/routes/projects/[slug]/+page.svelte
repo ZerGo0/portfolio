@@ -1,6 +1,6 @@
 <script lang="ts">
   import { base } from '$app/paths';
-  import { getAssetURL } from '$lib/data/assets';
+  import { getAssetURL, isBlackAsset } from '$lib/data/assets';
   import { title } from '@data/projects';
 
   import type { Project } from '$lib/types';
@@ -44,7 +44,7 @@
     </div>
   {:else}
     <div class="flex flex-col items-center overflow-x-hidden">
-      <Banner img={getAssetURL(data.project.logo)}>
+      <Banner img={getAssetURL(data.project.logo)} imgBlack={isBlackAsset(data.project.logo)}>
         <div class="col-center p-y-20">
           <div class="text-0.9em">
             <MainTitle>{data.project.name}</MainTitle>
@@ -75,6 +75,7 @@
                   radius="0px"
                   size={15}
                   classes="mr-2"
+                  black={isBlackAsset(item.logo)}
                 />
                 <span class="text-[0.9em]">{item.name}</span>
               </Chip>
