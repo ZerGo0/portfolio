@@ -22,7 +22,7 @@ Features include:
 - Toast notifications with Svelte Sonner
 - High-performance backend with Zap logging
 - Brotli compression for optimized delivery`,
-    shortDescription: 'A modern web-based toolbox with various utilities and tools.',
+    shortDescription: 'A modern web-based toolbox with various utilities and tools for Fansly.com',
     links: [
       { to: 'https://github.com/ZerGo0/FToolbox', label: 'GitHub' },
       { to: 'https://ftoolbox.zergo0.dev/', label: 'Website' }
