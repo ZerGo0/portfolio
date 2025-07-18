@@ -6,24 +6,24 @@
   import { items, title } from '@data/experience';
   import { isBlank } from '@riadh-adrani/utils';
 
-  let result: Array<Experience> = $state([...items]);
+  let search = $state('');
+  let result: Array<Experience> = $derived.by(() => {
+    const query = search.trim().toLowerCase();
 
-  const onSearch = (query: string) => {
     if (isBlank(query)) {
-      result = items;
-      return;
+      return items;
     }
 
-    result = items.filter(
+    return items.filter(
       (it) =>
         it.name.toLowerCase().includes(query) ||
         it.company.toLowerCase().includes(query) ||
         it.description.toLowerCase().includes(query)
     );
-  };
+  });
 </script>
 
-<SearchPage {title} onsearch={onSearch}>
+<SearchPage {title} bind:search>
   <div class="col items-center relative mt-10 flex-1">
     {#if result.length === 0}
       <div class="p-5 col-center gap-3 m-y-auto text-[var(--accent-text)] flex-1">

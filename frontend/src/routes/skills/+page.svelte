@@ -7,14 +7,11 @@
   import UIcon from '$lib/components/Icon/UIcon.svelte';
   import SearchPage from '$lib/components/SearchPage.svelte';
 
-  let result = $state(groupByCategory(''));
-
-  const onSearch = (search: string) => {
-    result = groupByCategory(search.trim().toLowerCase());
-  };
+  let search = $state('');
+  let result = $derived(groupByCategory(search.trim().toLowerCase()));
 </script>
 
-<SearchPage {title} onsearch={onSearch}>
+<SearchPage {title} bind:search>
   {#if result.length === 0}
     <div class="p-5 col-center gap-3 m-y-auto text-[var(--accent-text)] flex-1">
       <UIcon icon="i-carbon-cube" classes="text-3.5em" />
