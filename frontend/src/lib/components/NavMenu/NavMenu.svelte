@@ -1,7 +1,7 @@
 <script lang="ts">
   import { theme, toggleTheme } from '$lib/stores/theme';
-  import { items } from '@data/navbar';
   import * as HOME from '@data/home';
+  import { items } from '@data/navbar';
 
   import { base } from '$app/paths';
   import UIcon from '../Icon/UIcon.svelte';
@@ -21,7 +21,7 @@
   <nav class="container flex flex-row items-center text-sm">
     <a
       href={`${base}/`}
-      class="nav-menu-left decoration-none w-auto md:w-150px lg:w-auto row flex flex-row items-center cursor-pointer px-4 text-[var(--secondary-text)] self-stretch hover:bg-[color:var(--main-hover)]"
+      class="nav-menu-left decoration-none w-auto row flex flex-row items-center cursor-pointer px-4 text-[var(--secondary-text)] self-stretch hover:bg-[color:var(--main-hover)]"
     >
       <UIcon icon="i-carbon-code" classes="text-2em" />
       <span
@@ -41,9 +41,7 @@
         </a>
       {/each}
     </div>
-    <div
-      class="row h-full justify-center items-stretch m-l-auto md:m-l-0 w-auto md:w-150px gap-1 text-1.15em"
-    >
+    <div class="row h-full justify-center items-stretch m-l-auto md:m-l-0 w-auto gap-1 text-1.15em">
       <div class="row hidden md:flex">
         <a
           href={`${base}/search`}
@@ -117,7 +115,6 @@
     position: sticky;
     top: 0px;
     z-index: 10;
-    padding: 0px 10px;
     height: 50px;
     border-bottom: 1px solid var(--secondary);
     background-color: var(--main);

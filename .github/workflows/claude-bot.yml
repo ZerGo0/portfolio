@@ -51,6 +51,11 @@ jobs:
           which claude
           echo "Bot compiled successfully"
 
+      - name: Install pnpm
+        if: steps.check-command.outputs.command-found == 'true'
+        run: |
+          npm install -g pnpm
+
       - name: Execute command
         if: steps.check-command.outputs.command-found == 'true'
         env:
