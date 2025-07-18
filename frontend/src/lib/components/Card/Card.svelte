@@ -12,6 +12,7 @@
     classes?: Array<string>;
     href?: undefined | string;
     bgImg?: string | undefined;
+    bgImgBlack?: boolean;
     children?: import('svelte').Snippet;
   }
 
@@ -22,6 +23,7 @@
     classes = [],
     href = undefined,
     bgImg = undefined,
+    bgImgBlack = false,
     children
   }: Props = $props();
 
@@ -81,7 +83,7 @@
     {href}
     bind:this={el}
     onmousemove={onHover}
-    class={`card text-inherit decoration-none inline-flex flex-col border-1px border-solid border-[var(--border)] rounded-15px duration relative ${classes.join(
+    class={`card ${bgImgBlack ? 'card-black-bg' : ''} text-inherit decoration-none inline-flex flex-col border-1px border-solid border-[var(--border)] rounded-15px duration relative ${classes.join(
       ' '
     )}`}
   >
@@ -97,7 +99,7 @@
     onmousemove={onHover}
     role="article"
     tabindex="-1"
-    class={`card text-inherit decoration-none inline-flex flex-col border-1px border-solid border-[var(--border)] rounded-15px duration relative ${classes.join(
+    class={`card ${bgImgBlack ? 'card-black-bg' : ''} text-inherit decoration-none inline-flex flex-col border-1px border-solid border-[var(--border)] rounded-15px duration relative ${classes.join(
       ' '
     )}`}
   >
@@ -141,6 +143,30 @@
     &:hover {
       transform: perspective(1000px) rotateX(var(--rot-x)) rotateY(var(--rot-y)) scale(1.01);
       border-color: var(--border-hover);
+    }
+  }
+
+  :global(:root[data-theme='dark']) .card-black-bg {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background: no-repeat right 40% / 40% var(--bg-img);
+      filter: brightness(0) invert(1);
+      opacity: 0.4;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: 15px;
+    }
+
+    .card-bg-img {
+      position: relative;
+      z-index: 1;
     }
   }
 </style>

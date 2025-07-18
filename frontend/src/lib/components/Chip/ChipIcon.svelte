@@ -8,6 +8,7 @@
     grayscale?: boolean;
     href?: string | undefined;
     children?: import('svelte').Snippet;
+    black?: boolean;
   }
 
   let {
@@ -16,7 +17,8 @@
     inverted = false,
     grayscale = true,
     href = undefined,
-    children
+    children,
+    black = false
   }: Props = $props();
 </script>
 
@@ -30,7 +32,7 @@
       {@render children?.()}
     {:else}
       <img
-        class={`w-15px h-15px ${inverted ? 'invert-100' : ''}`}
+        class={`w-15px h-15px ${inverted ? 'invert-100' : ''} ${black ? 'black-logo' : ''}`}
         class:chip-icon-logo-inverted={$theme && inverted}
         src={logo}
         alt={name}
@@ -46,7 +48,7 @@
       {@render children?.()}
     {:else}
       <img
-        class={`w-15px h-15px ${inverted ? 'invert-100' : ''}`}
+        class={`w-15px h-15px ${inverted ? 'invert-100' : ''} ${black ? 'black-logo' : ''}`}
         class:chip-icon-logo-inverted={$theme && inverted}
         src={logo}
         alt={name}

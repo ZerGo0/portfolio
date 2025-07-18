@@ -5,9 +5,16 @@
     size?: number;
     radius?: string;
     classes?: string;
+    black?: boolean;
   }
 
-  let { src, alt, size = 50, radius = '15px', classes = '' }: Props = $props();
+  let { src, alt, size = 50, radius = '15px', classes = '', black = false }: Props = $props();
 </script>
 
-<img class={`rounded-${radius} ${classes} aspect-square`} {src} {alt} height={size} width={size} />
+<img
+  class={`rounded-${radius} ${classes} ${black ? 'black-logo' : ''} aspect-square`}
+  {src}
+  {alt}
+  height={size}
+  width={size}
+/>

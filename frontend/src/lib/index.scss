@@ -367,3 +367,10 @@ body {
     }
   }
 }
+
+// Black logo handling for dark mode
+:root[data-theme='dark'] {
+  .black-logo {
+    filter: brightness(0) invert(1);
+  }
+}

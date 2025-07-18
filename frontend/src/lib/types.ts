@@ -21,7 +21,7 @@ export enum ContractType {
   Internship = 'Internship'
 }
 
-export type Asset = string | { light: string; dark: string };
+export type Asset = string | { light: string; dark: string; black: boolean };
 
 export interface Item<S extends string = string> {
   slug: S;

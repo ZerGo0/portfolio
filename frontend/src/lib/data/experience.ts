@@ -4,6 +4,37 @@ import { getSkills } from './skills';
 
 export const items: Array<Experience> = [
   {
+    slug: 'wishly-fullstack-engineer',
+    company: 'Cassie Grey LLC',
+    description:
+      '- Architected and implemented complete Stripe embedded checkout integration with secure payment processing\n- Built RYE Product Worker with webhook support and queue management for handling product imports from luxury brands\n- Led full site redesign improving user experience and conversion rates\n- Developed key features: gift suggestions system, notifications with infinite scroll, following/followers functionality, custom collections, wishlist themes, and featured items\n- Implemented privacy-focused architecture allowing anonymous gifting while protecting creator information\n- Built scalable Next.js application with App Router, API routes, and server-side rendering on Vercel\n- Integrated multiple third-party services: Supabase for database, Resend for transactional emails, Mailchimp for marketing',
+    contract: ContractType.FullTime,
+    type: 'Software Development',
+    location: 'Remote',
+    period: { from: new Date(2025, 1, 3) },
+    skills: getSkills(
+      'nextjs',
+      'react',
+      'ts',
+      'js',
+      'stripe',
+      'supabase',
+      'postgresql',
+      'drizzle',
+      'resend',
+      'vercel',
+      'tailwind',
+      'css',
+      'html'
+    ),
+    name: 'Full Stack Engineer',
+    color: 'purple',
+    links: [{ label: 'Wish.ly', to: 'https://www.wish.ly', newTab: true }],
+    logo: Assets.Wishly,
+    shortDescription:
+      'Building premium gift registry platform for creators with focus on privacy and luxury brands.'
+  },
+  {
     slug: 'fullstack-engineer',
     company: '4SELLERS GmbH',
     description:
@@ -11,7 +42,7 @@ export const items: Array<Experience> = [
     contract: ContractType.FullTime,
     type: 'Software Development',
     location: 'Leipzig, Germany - Remote',
-    period: { from: new Date(2020, 8, 1) },
+    period: { from: new Date(2020, 8, 1), to: new Date(2025, 0, 31) },
     skills: getSkills(
       'dotnet',
       'js',

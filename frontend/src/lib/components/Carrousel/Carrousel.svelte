@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { getAssetURL } from '$lib/data/assets';
+  import { getAssetURL, isBlackAsset } from '$lib/data/assets';
   import type { Skill } from '$lib/types';
   import UIcon from '../Icon/UIcon.svelte';
 
@@ -83,7 +83,11 @@
   <div bind:this={element} class="row overflow-hidden box-content w-150px">
     {#each items as item (item.name)}
       <div class="box-content w-150px p-15px col-center">
-        <img class="w-120px h-120px aspect-square" src={getAssetURL(item.logo)} alt={item.name} />
+        <img
+          class={`w-120px h-120px aspect-square ${isBlackAsset(item.logo) ? 'black-logo' : ''}`}
+          src={getAssetURL(item.logo)}
+          alt={item.name}
+        />
         <span class="text-center m-t-20px">{item.name}</span>
       </div>
     {/each}

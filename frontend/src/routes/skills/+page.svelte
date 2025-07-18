@@ -1,11 +1,11 @@
 <script lang="ts">
   import { base } from '$app/paths';
-  import { title, groupByCategory } from '@data/skills';
-  import { getAssetURL } from '$lib/data/assets';
+  import { getAssetURL, isBlackAsset } from '$lib/data/assets';
+  import { groupByCategory, title } from '@data/skills';
 
-  import SearchPage from '$lib/components/SearchPage.svelte';
   import Card from '$lib/components/Card/Card.svelte';
   import UIcon from '$lib/components/Icon/UIcon.svelte';
+  import SearchPage from '$lib/components/SearchPage.svelte';
 
   let result = $state(groupByCategory(''));
 
@@ -36,6 +36,7 @@
                 tiltDegree={1}
                 href={`${base}/skills/${skill.slug}`}
                 bgImg={getAssetURL(skill.logo)}
+                bgImgBlack={isBlackAsset(skill.logo)}
                 color={skill.color}
               >
                 <p class="text-[var(--tertiary-text)]">{skill.name}</p>
