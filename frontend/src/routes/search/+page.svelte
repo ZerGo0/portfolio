@@ -23,48 +23,40 @@
   let result: Array<SearchResultItem> = $state([]);
 
   $effect(() => {
-    let searchParams = new URLSearchParams(window.location.search);
-
-    query = searchParams.get('q') ?? '';
-  });
-
-  $effect(() => {
-    result = [];
-
-    // filter
-    result.push(
-      ...filterItemsByQuery(projects.items, query).map<SearchResultItem>((data) => ({
+    const projectResults = filterItemsByQuery(projects.items, query).map<SearchResultItem>(
+      (data) => ({
         data,
         icon: 'i-carbon-cube',
         name: data.name,
         to: `projects/${data.slug}`
-      }))
+      })
     );
 
-    result.push(
-      ...filterItemsByQuery(
-        skills.items as unknown as Array<ItemOrSkill>,
-        query
-      ).map<SearchResultItem>((data) => ({
-        data,
-        icon: 'i-carbon-software-resource-cluster',
-        name: data.name,
-        to: `skills/${data.slug}`
-      }))
-    );
+    const skillResults = filterItemsByQuery(
+      skills.items as unknown as Array<ItemOrSkill>,
+      query
+    ).map<SearchResultItem>((data) => ({
+      data,
+      icon: 'i-carbon-software-resource-cluster',
+      name: data.name,
+      to: `skills/${data.slug}`
+    }));
 
-    result.push(
-      ...filterItemsByQuery(experiences.items, query).map<SearchResultItem>((data) => ({
+    const experienceResults = filterItemsByQuery(experiences.items, query).map<SearchResultItem>(
+      (data) => ({
         data,
         icon: 'i-carbon-development',
         name: `${data.name} @ ${data.company}`,
         to: `experience/${data.slug}`
-      }))
+      })
     );
+
+    // Replace the entire array instead of mutating it
+    result = [...projectResults, ...skillResults, ...experienceResults];
   });
 </script>
 
-<SearchPage {title} onsearch={(search) => (query = search)}>
+<SearchPage {title} bind:search={query}>
   <div class="flex flex-col items-stretch gap-10 p-2"></div>
   {#if !query}
     <div class="flex-1 self-center col-center m-t-10 gap-5 font-300 text-[var(--accent-text)]">

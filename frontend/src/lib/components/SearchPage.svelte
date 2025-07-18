@@ -1,10 +1,10 @@
 <script lang="ts">
+  import { replaceState } from '$app/navigation';
+  import { base } from '$app/paths';
+  import { page } from '$app/stores';
+  import { onMount } from 'svelte';
   import CommonPage from './CommonPage.svelte';
   import Input from './Input/Input.svelte';
-  import { browser } from '$app/environment';
-  import { page } from '$app/stores';
-  import { base } from '$app/paths';
-  import { SvelteURLSearchParams } from 'svelte/reactivity';
 
   interface Props {
     title?: string;
@@ -15,38 +15,46 @@
 
   let { title = 'Title', search = $bindable(''), children, onsearch }: Props = $props();
   let searchInput: Input | undefined = $state();
-
+  let previousSearch: string | undefined;
   let mounted = $state(false);
 
-  $effect(() => {
-    onsearch?.(search.trim().toLowerCase());
-  });
-
-  $effect(() => {
-    if (browser && mounted) {
-      let searchParams = new SvelteURLSearchParams(window.location.search);
-
-      searchParams.set('q', search);
-
-      const url = `${window.location.protocol}//${window.location.host}${
-        window.location.pathname
-      }?${searchParams.toString()}`;
-
-      const state = window.history.state;
-
-      window.history.replaceState(state, '', url);
-
-      if ($page.url.pathname.startsWith(`${base}/search`)) {
-        searchInput?.focus();
-      }
+  // Initialize from URL on mount
+  onMount(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const urlQuery = searchParams.get('q') ?? '';
+    if (urlQuery) {
+      search = urlQuery;
+      previousSearch = urlQuery;
     }
+
+    if ($page.url.pathname.startsWith(`${base}/search`)) {
+      searchInput?.focus();
+    }
+
+    mounted = true;
   });
 
+  // Handle search changes after mount
   $effect(() => {
-    let searchParams = new SvelteURLSearchParams(window.location.search);
+    if (!mounted) return;
 
-    search = searchParams.get('q') ?? '';
-    mounted = true;
+    if (search !== previousSearch) {
+      previousSearch = search;
+
+      // Call onsearch if provided
+      onsearch?.(search.trim().toLowerCase());
+
+      // Update URL with a small delay to ensure router is ready
+      setTimeout(() => {
+        const url = new URL(window.location.href);
+        if (search) {
+          url.searchParams.set('q', search);
+        } else {
+          url.searchParams.delete('q');
+        }
+        replaceState(url, window.history.state);
+      }, 0);
+    }
   });
 </script>
 
