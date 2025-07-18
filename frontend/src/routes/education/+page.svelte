@@ -57,7 +57,7 @@
                   alt={education.organization}
                   height="50"
                   width="50"
-                  class="mb-5"
+                  class="mb-5 logo-img"
                 />
                 <div class="text-[1.3em]">{education.degree}</div>
                 <div>{education.organization}</div>
