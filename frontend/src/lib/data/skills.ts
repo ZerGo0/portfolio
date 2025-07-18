@@ -207,6 +207,78 @@ export const items = [
     logo: Assets.Less,
     name: 'Less',
     category: 'markup-style'
+  }),
+  defineSkill({
+    slug: 'nextjs',
+    color: 'black',
+    description:
+      'Next.js is a React framework that enables functionality such as server-side rendering and generating static websites.',
+    logo: Assets.NextJs,
+    name: 'Next.js',
+    category: 'framework'
+  }),
+  defineSkill({
+    slug: 'react',
+    color: 'blue',
+    description:
+      'React is a JavaScript library for building user interfaces, particularly single-page applications.',
+    logo: Assets.ReactJs,
+    name: 'React',
+    category: 'library'
+  }),
+  defineSkill({
+    slug: 'stripe',
+    color: 'purple',
+    description:
+      'Stripe is a technology company that builds economic infrastructure for the internet, specializing in payment processing.',
+    logo: Assets.Stripe,
+    name: 'Stripe',
+    category: 'library'
+  }),
+  defineSkill({
+    slug: 'supabase',
+    color: 'green',
+    description:
+      'Supabase is an open-source Firebase alternative providing database, authentication, storage, and edge functions.',
+    logo: Assets.Supabase,
+    name: 'Supabase',
+    category: 'db'
+  }),
+  defineSkill({
+    slug: 'drizzle',
+    color: 'green',
+    description:
+      'Drizzle is a TypeScript ORM that provides type-safe database queries and schema management.',
+    logo: Assets.Drizzle,
+    name: 'Drizzle ORM',
+    category: 'orm'
+  }),
+  defineSkill({
+    slug: 'resend',
+    color: 'black',
+    description:
+      'Resend is a modern email API for developers, designed to make sending transactional emails simple and reliable.',
+    logo: Assets.Resend,
+    name: 'Resend',
+    category: 'library'
+  }),
+  defineSkill({
+    slug: 'postgresql',
+    color: 'blue',
+    description:
+      'PostgreSQL is a powerful, open-source object-relational database system with strong reliability and data integrity.',
+    logo: Assets.PostgreSQL,
+    name: 'PostgreSQL',
+    category: 'db'
+  }),
+  defineSkill({
+    slug: 'vercel',
+    color: 'black',
+    description:
+      'Vercel is a cloud platform for static sites and serverless functions that enables developers to deploy instantly.',
+    logo: Assets.Vercel,
+    name: 'Vercel',
+    category: 'devops'
   })
   // defineSkill({
   // 	slug: 'placeholder',

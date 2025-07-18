@@ -82,7 +82,14 @@ const Assets = {
   MySql: a('mysql.svg'),
   GithubActions: a('github-actions.svg'),
   Cloudflare: a('cloudflare.svg'),
-  Less: a('less.svg')
+  Less: a('less.svg'),
+  NextJs: a('nextjs.svg'),
+  Stripe: a('stripe.svg'),
+  Supabase: a('supabase.svg'),
+  Drizzle: a('drizzle.svg'),
+  Resend: a('resend.svg'),
+  Vercel: a('vercel.svg'),
+  Wishly: a('wishly.svg')
 };
 
 export default Assets;
