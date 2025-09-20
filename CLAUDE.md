@@ -3,91 +3,77 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
+- Name
+  - Portfolio (SvelteKit) — package `frontend/package.json` name: `portfolio`.
+- Description
+  - Static portfolio website generated with SvelteKit 2 (Svelte 5 runes), styled via UnoCSS + SCSS, deployed to Cloudflare Workers with Wrangler. Content is stored in TypeScript files and fully pre-rendered.
+- Key notes or warnings (e.g. API quirks, data formats, environment caveats)
+  - Static Site Generation is enabled globally (`frontend/src/routes/+layout.ts` sets `prerender = true`).
+  - No runtime API calls; all content lives under `frontend/src/lib/data/*` with types in `frontend/src/lib/types.ts`.
+  - Path aliases are configured in `frontend/svelte.config.js` (`$lib`, `@data`, `@components`, `@md`, `@stores`, `@utils`).
+  - Use `pnpm`; after any change, run `pnpm check && pnpm lint` in `frontend/`.
+  - Cloudflare Worker output is under `.svelte-kit/cloudflare/_worker.js` (see `frontend/wrangler.json`).
 
-This is a portfolio website with:
+## Global Rules
+The following rules MUST always be included verbatim in every CLAUDE.md:
+- **NEVER** use emojis!
+- **NEVER** try to run the dev server!
+- **NEVER** try to build in the project directory, always build in the `/tmp` directory!
+- **ALWAYS** search for existing code patterns in the codebase and follow them consistently
+- **NEVER** use comments in code — code should be self-explanatory
 
-- **Frontend**: SvelteKit (static site generation) with TypeScript, UnoCSS, and Svelte 5
+## High-Level Architecture
+- Databases, services, frameworks, or core technologies
+  - SvelteKit 2 + Svelte 5 (runes), Vite 5, TypeScript (strict), UnoCSS, SCSS, Prism.js, marked, Cloudflare Workers (via `@sveltejs/adapter-cloudflare` + `wrangler`).
+- How different systems interact (backend, frontend, workers, etc.)
+  - Single frontend app. Build step generates a Cloudflare Worker bundle; static assets served by Cloudflare. No backend or database.
+- Where the source of truth lives for schemas or shared types
+  - `frontend/src/lib/types.ts` defines item/skill/project/experience/education types used across data files and components.
 
-## RULES
+## Project Guidelines
+For each major project in the monorepo:
 
-- **ALWAYS** run `pnpm check && pnpm lint` after making changes to the codebase.
+- frontend
+  - Language(s) used
+    - TypeScript, Svelte 5 with runes.
+  - Framework(s) / runtime
+    - SvelteKit 2 on Vite 5; Cloudflare Workers adapter; UnoCSS with presets and shortcuts; SCSS for global styles.
+  - Package manager
+    - `pnpm` (see `frontend/pnpm-lock.yaml`).
+  - Important Packages (list key dependencies, not exhaustive)
+    - `@sveltejs/kit`, `svelte`, `vite`, `@sveltejs/adapter-cloudflare`, `unocss` (+ presets), `@iconify-json/carbon`, `marked`, `prismjs`, `dompurify`, `sass`, `eslint`, `prettier`, `svelte-check`, `wrangler`.
+  - Checks (Claude must run these every time after making changes)
+    - `pnpm check && pnpm lint` (from `frontend/`).
+  - Rules / conventions (prefer ALWAYS/NEVER phrasing for clarity)
+    - ALWAYS keep TypeScript strict and follow the shapes in `src/lib/types.ts`.
+    - ALWAYS use configured path aliases (`$lib`, `@data`, `@components`, `@md`, `@stores`, `@utils`).
+    - ALWAYS use UnoCSS utilities and CSS variables; prefer component composition (Card + subcomponents).
+    - ALWAYS sanitize and highlight Markdown via the existing `Markdown.svelte` pattern (marked + DOMPurify + Prism).
+    - NEVER add runtime API calls; content is static and pre-rendered.
+    - NEVER inline imports.
+    - NEVER try to run `git commit` unless explicitly told to.
+    - NEVER leave bread crumbs when you delete old code.
+    - ALWAYS do what the rules say in AGENTS.md; don't ask for permissions—just follow them.
+  - Useful files (only those that need calling out)
+    - `frontend/svelte.config.js` — adapter, aliases, compiler options (runes: true).
+    - `frontend/vite.config.ts` — Vite plugins (UnoCSS, SvelteKit) and SCSS preprocessing.
+    - `frontend/uno.config.ts` — UnoCSS extractors, presets, shortcuts.
+    - `frontend/tsconfig.json` — strict TS with `verbatimModuleSyntax`.
+    - `frontend/wrangler.json` — Cloudflare deployment config and routes.
+    - `frontend/src/lib/types.ts` — source of truth for data types.
+    - `frontend/src/lib/data/*` — portfolio content; keep shapes consistent with types.
+    - `frontend/src/routes/+layout.ts` — sets global `prerender = true`.
 
-## Technology Stack
+## Key Architectural Patterns
+- Static site generation
+  - `prerender = true` globally; routes derive content from typed TS data modules.
+- Component composition
+  - Card components split into subcomponents (`Card`, `CardTitle`, `CardLink`, `CardDivider`, `CardLogo`) and use slots.
+- Styling and theming
+  - UnoCSS utilities with custom shortcuts; CSS variables for dynamic theming; theme store toggles `data-theme` on `:root`.
+- Markdown rendering
+  - `Markdown.svelte` uses marked + DOMPurify + Prism; follow this pattern for any rich text.
+- Icons
+  - UnoCSS Icons with `i-carbon-*` classes via `UIcon.svelte`.
 
-- **Framework**: SvelteKit with Svelte 5 (runes enabled)
-- **Language**: TypeScript (strict mode)
-- **Styling**: UnoCSS with custom shortcuts, SCSS for global styles
-- **Icons**: UnoCSS Icons (@iconify-json/carbon)
-- **Markdown**: marked with Prism.js for syntax highlighting
-- **Deployment**: Cloudflare Workers (via wrangler)
-- **Package Manager**: pnpm
-
-## Architecture & Patterns
-
-### Frontend Structure
-
-- **Static Site Generation**: All content is pre-rendered at build time
-- **Data Management**: Portfolio content stored in TypeScript files (`/frontend/src/lib/data/`)
-- **Component Library**: Reusable components in `/frontend/src/lib/components/`
-- **Routing**: File-based routing with pattern `/[category]/[slug]/`
-- **State**: Minimal global state, only theme preference in Svelte stores
-
-### Key Patterns
-
-1. **Type Safety**: All data structures defined in `/frontend/src/lib/types.ts`
-2. **Component Composition**: Card components use slots and composition patterns
-3. **CSS Variables**: Dynamic styling through CSS custom properties
-4. **No API Communication**: Frontend data is hardcoded, no runtime API calls
-
-## Path Aliases
-
-The project uses these path aliases for cleaner imports:
-
-- `$lib` → `./src/lib`
-- `@data` → `./src/lib/data`
-- `@components` → `./src/lib/components`
-- `@md` → `./src/lib/md`
-- `@stores` → `./src/lib/stores`
-- `@utils` → `./src/lib/utils`
-
-## Key Files
-
-### Data Files (`/frontend/src/lib/data/`)
-
-- `projects.ts` - Portfolio projects data
-- `experience.ts` - Work experience entries
-- `skills.ts` - Technical skills categorized
-- `education.ts` - Educational background
-- `home.ts` - Homepage content
-- `navbar.ts` - Navigation structure
-
-### Configuration
-
-- `uno.config.ts` - UnoCSS configuration with custom shortcuts
-- `svelte.config.js` - SvelteKit configuration with Cloudflare adapter
-- `wrangler.json` - Cloudflare Workers deployment config
-
-## Component Guidelines
-
-1. **Component Structure**: Components follow a composition pattern with sub-components (e.g., Card → CardTitle, CardLink, CardDivider)
-2. **Styling**: Use UnoCSS utility classes and CSS variables for theming
-3. **Icons**: Use UIcon component with UnoCSS icon classes (format: `i-carbon-{icon-name}`)
-4. **Type Safety**: All components should have proper TypeScript types
-
-## Common Tasks
-
-### Adding a New Project
-
-1. Add project data to `/frontend/src/lib/data/projects.ts`
-2. Add screenshots to `/frontend/static/assets/projects/[project-slug]/`
-3. Project will automatically appear on the projects page
-
-### Adding a New Skill
-
-1. Add skill data to `/frontend/src/lib/data/skills.ts`
-2. Add logo to `/frontend/static/logos/`
-3. Skill will automatically appear on the skills page
-
-### Updating Resume
-
-- Replace `/frontend/static/resume.pdf` with the new version
+State Check: Single project (`frontend`), no backend/database, SSG enabled, Cloudflare Workers deployment, `pnpm` package manager, checks are `pnpm check && pnpm lint`, types live in `frontend/src/lib/types.ts`, data in `frontend/src/lib/data/*`, path aliases configured in `frontend/svelte.config.js`, and Global Rules above apply in full.
