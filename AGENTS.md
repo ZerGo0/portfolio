@@ -5,13 +5,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 - Name: Portfolio
-- Description: Static personal portfolio site built with SvelteKit 2 and Svelte 5 (runes), styled with UnoCSS and SCSS, deployed to Cloudflare Workers.
+- Description: Static personal portfolio built with SvelteKit 2 and Svelte 5 runes, styled via UnoCSS and SCSS, deployed to Cloudflare Workers.
 - Key notes/warnings:
-  - Static Site Generation only: `src/routes/+layout.ts` sets `prerender = true`; do not add runtime data fetching or server endpoints.
-  - Content source of truth lives in TypeScript under `frontend/src/lib/data/*` and shared types in `frontend/src/lib/types.ts`.
-  - Markdown is sanitized in `Markdown.svelte` using DOMPurify and highlighted with Prism; only pass sanitized HTML via `{@html}`.
-  - Cloudflare Worker entry is `.svelte-kit/cloudflare/_worker.js` with assets bound as `ASSETS` (see `frontend/wrangler.json`).
-  - CLAUDE.md is symlinked to AGENTS.md; both contain identical content.
+  - Entire site is statically generated; `frontend/src/routes/+layout.ts` exports `prerender = true`, so never add runtime data fetching or server endpoints.
+  - All content lives in TypeScript modules under `frontend/src/lib/data/*` and must comply with the shapes in `frontend/src/lib/types.ts`.
+  - Markdown rendering in `frontend/src/lib/components/Markdown.svelte` uses DOMPurify, marked, and Prism; only supply sanitized HTML or markdown strings to that component.
+  - Cloudflare Worker deployment relies on `.svelte-kit/cloudflare/_worker.js` and the bindings defined in `frontend/wrangler.json`; keep asset references in sync.
+  - `CLAUDE.md` is a symlink to `AGENTS.md`; always edit `AGENTS.md` so both instruction files stay identical.
 
 ## Global Rules
 
@@ -19,16 +19,21 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **NEVER** try to run the dev server!
 - **NEVER** try to build in the project directory, always build in the `/tmp` directory!
 - **ALWAYS** search for existing code patterns in the codebase and follow them consistently
-- **NEVER** use comments in code — code should be self-explanatory
+- **NEVER** use comments in code - code should be self-explanatory
+- **NEVER** cut corners, don't leave comments like `TODO: Implement X in the future here`! Always fully implement everything!
+- **ALWAYS** when you're done, self-critique your work until you're sure it's correct
+- **NEVER** run automated test suites unless a human explicitly requests it; do not search for tests by default.
+- **ALWAYS** keep `CLAUDE.md` and `AGENTS.md` synchronized by updating `AGENTS.md` (the symlink target) directly.
 
 ## High-Level Architecture
 
-- Frontend: SvelteKit 2 + Svelte 5 (runes enabled), TypeScript strict.
-- Styling: UnoCSS (with shortcuts and preset-icons) and SCSS for global styles.
-- Content/Data: Hardcoded TS modules under `frontend/src/lib/data/*`; no API calls.
-- Hosting: Cloudflare Workers via `@sveltejs/adapter-cloudflare` and `wrangler`.
-- Schemas/Types source of truth: `frontend/src/lib/types.ts`.
-- Theme: Dark/light mode toggle stored in localStorage via Svelte store.
+- **Frontend:** Single `frontend` app using SvelteKit 2 with Svelte 5 runes and strict TypeScript.
+- **Styling:** UnoCSS presets (icons, webfonts, shortcuts) plus SCSS tokens in `frontend/src/lib/index.scss`.
+- **Content Source:** Typed data modules in `frontend/src/lib/data/*`, sharing interfaces from `frontend/src/lib/types.ts`.
+- **Routing:** Prerendered static pages and `[slug]` routes that select entries with local data (`frontend/src/routes/**`); no network access at runtime.
+- **Deployment:** Cloudflare Workers via `@sveltejs/adapter-cloudflare`; configuration in `frontend/wrangler.json` and output worker at `.svelte-kit/cloudflare/_worker.js`.
+- **Markdown Pipeline:** `frontend/src/lib/components/Markdown.svelte` sanitizes and highlights markdown using DOMPurify, marked (GFM + mangle), and Prism.
+- **Theme State:** `frontend/src/lib/stores/theme.ts` persists dark/light selection in `localStorage` on hydration.
 
 ## Project Guidelines
 
@@ -36,44 +41,47 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Language: TypeScript
 - Framework/Runtime: SvelteKit 2 (Svelte 5 runes)
 - Package Manager: pnpm
-- Important Packages: `@sveltejs/adapter-cloudflare`, `@sveltejs/kit`, `svelte`, `unocss`, `@unocss/preset-icons`, `@unocss/extractor-svelte`, `sass`, `marked`, `dompurify`, `prismjs`, `dayjs`, `slugify`, `wrangler`
+- Important Packages: `@sveltejs/kit`, `@sveltejs/adapter-cloudflare`, `svelte`, `unocss`, `@unocss/preset-icons`, `sass`, `marked`, `dompurify`, `prismjs`, `dayjs`, `wrangler`
 - Checks:
   - Syntax Check: `pnpm check`
   - Lint: `pnpm lint`
   - Format: `pnpm format`
   - **ALWAYS** run these after you are done making changes
 - Rules / Conventions:
-  - ALWAYS keep the site prerendered; do not remove `export const prerender = true` or add runtime fetching.
-  - ALWAYS use path aliases from `svelte.config.js` (`$lib`, `@data`, `@components`, `@md`, `@stores`, `@utils`).
-  - ALWAYS add/edit content in `frontend/src/lib/data/*`; keep data typed against `frontend/src/lib/types.ts`.
-  - ALWAYS use UnoCSS utilities and CSS variables for styling; prefer existing shortcuts in `uno.config.ts`.
-  - ALWAYS render icons via `UIcon` with UnoCSS classes (e.g., `i-carbon-...`).
-  - ALWAYS sanitize and render markdown via `Markdown.svelte` (DOMPurify + marked + Prism).
-  - NEVER introduce backend endpoints or client-side network calls.
-  - NEVER run `pnpm dev` or `wrangler dev`; build in `/tmp` only.
-  - Build workflow (when needed): copy `frontend` to `/tmp`, then inside that copy run `pnpm install && pnpm run build`.
+  - **ALWAYS** keep `export const prerender = true` in `src/routes/+layout.ts` and confirm new routes remain SSG-safe.
+  - **ALWAYS** edit or add copy in `src/lib/data/*` and validate against `src/lib/types.ts` before importing it.
+  - **ALWAYS** import through the aliases defined in `svelte.config.js` (`$lib`, `@data`, `@components`, `@md`, `@stores`, `@utils`).
+  - **ALWAYS** reuse UnoCSS shortcuts and design tokens; place bespoke SCSS alongside `src/lib/index.scss`.
+  - **ALWAYS** render icons with `UIcon` and UnoCSS `i-carbon-*` classes; map assets through `src/lib/data/assets.ts`.
+  - **ALWAYS** route markdown through `Markdown.svelte` so DOMPurify and Prism run consistently across pages.
+  - **ALWAYS** maintain theme persistence via the `theme` store in `src/lib/stores/theme.ts` rather than direct DOM manipulation.
+  - **NEVER** add server endpoints, loaders with runtime fetches, or client-side network calls.
+  - **NEVER** run `pnpm dev`, `vite dev`, or `wrangler dev`; only build from a `/tmp` copy.
+  - **NEVER** reimplement search or date utilities; rely on helpers like `filterItemsByQuery` and `getHumanReadableDate` in `src/lib/utils/helpers.ts`.
 - Useful files:
-  - `frontend/svelte.config.js` — Cloudflare adapter, aliases, runes enabled.
-  - `frontend/uno.config.ts` — UnoCSS presets and shortcuts.
-  - `frontend/vite.config.ts` — UnoCSS + SvelteKit plugins, SCSS options.
-  - `frontend/wrangler.json` — Worker entry, assets binding, routes.
-  - `frontend/src/lib/types.ts` — shared types for data files.
-  - Data modules: `frontend/src/lib/data/{projects,experience,skills,education,assets,navbar,app,home,resume,search}.ts`.
-  - `frontend/src/lib/components/*` — reusable component library (Cards, Icons, Markdown, etc.).
-  - `frontend/src/lib/stores/theme.ts` — minimal global state for theme, persisted to `localStorage`.
-  - `frontend/src/lib/index.scss` — global variables, theme tokens, and markdown code styling.
-  - `frontend/src/routes/+layout.ts` — SSG prerender configuration.
+  - `frontend/svelte.config.js` — Cloudflare adapter setup, path aliases, runes enabled.
+  - `frontend/vite.config.ts` — Vite + UnoCSS integration and SCSS preprocessing options.
+  - `frontend/uno.config.ts` — UnoCSS presets, shortcuts, and font configuration.
+  - `frontend/wrangler.json` — Cloudflare Worker bindings and routes.
+  - `frontend/src/lib/types.ts` — Canonical types for projects, skills, experience, education, and assets.
+  - `frontend/src/lib/utils/helpers.ts` — Shared search, date, and duration helpers.
+  - `frontend/src/lib/components/Markdown.svelte` — Sanitized markdown renderer with Prism highlighting.
+  - `frontend/src/lib/stores/theme.ts` — LocalStorage-backed theme toggle logic.
+  - `frontend/src/lib/data/*` — Authoritative content modules consumed by pages.
+  - `frontend/src/routes/**` — Static and `[slug]` pages; data loaders select entries from local modules.
+
+## Patterns Directory
+
+- `.zergo0/patterns/` is the canonical catalog of repository coding patterns generated by the `patterns` command; review relevant entries before implementing or refactoring features.
+- When new patterns emerge, extend `.zergo0/patterns/` only after the implementation is stable, documenting intent, file locations, and reusable techniques to support future automation.
 
 ## Key Architectural Patterns
 
-- Component composition: Card components with subcomponents (`Card`, `CardTitle`, `CardLink`, `CardDivider`, `CardLogo`).
-- Styling via CSS variables and UnoCSS utilities; shared shortcuts in `uno.config.ts`.
-- Icons via UnoCSS preset-icons and `UIcon` component with `i-carbon-*` classes.
-- Svelte 5 runes (`$state`, `$effect`, `$derived`) for reactivity in components.
-- Routing uses dynamic slug pages per category: `/projects/[slug]`, `/skills/[slug]`, `/experience/[slug]`; home and listing pages are static.
-- Strict type safety for all content; `types.ts` is the single source of truth for shared shapes.
-- Asset handling: Support for light/dark variants via `{ light: string; dark: string; black: boolean }` type.
-- Markdown pipeline: marked → DOMPurify → Prism highlighting with `{@html}` directive.
+- Data-driven routing: each `[slug]/+page.ts` selects items from the matching `@data/*` list and exposes them to Svelte pages.
+- Search experiences rely on Svelte 5 runes (`$state`, `$derived`) combined with utilities like `filterItemsByQuery` to keep filtering logic consistent.
+- Card-based layout components (`Card`, `ExperienceCard`, `Banner`, `Chip`, etc.) compose pages while sharing UnoCSS shortcuts for spacing and typography.
+- Asset helpers (`getAssetURL`, `isBlackAsset`) centralize image variant handling for light/dark logos.
+- Markdown content flows through `Markdown.svelte` to guarantee DOMPurify sanitization and Prism syntax highlighting across the site.
 
 <answer-structure>
 ## MANDATORY Answer Format
